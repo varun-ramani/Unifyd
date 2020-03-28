@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-var config = require('./config')
+var config = require('../config')
 const url = config.database.uri;
 
 var _db;

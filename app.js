@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
-app.use(cookieParser('betajithisisvarun')); 
+app.use(cookieParser('betajithisisvarun'));
 
 app.use(express.static('static'))
 
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
     //Use this middleware section for handling user auth and session stuff
 
 })
-app.use('/', routes)
+// app.use('/', routes)
 
 app.use(function (req, res) {
     res.status(404)
@@ -69,7 +69,7 @@ app.use(function (error, req, res, next) {
 });
 
 dbSetup.connectToServer(function (err, client) {
-    app.listen(config.express.port, function () {
-        console.log('Listening on port ' + config.express.port + '...')
+    app.listen(config.port, function () {
+        console.log('Listening on port ' + config.port + '...')
     })
 });
