@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
-app.use(cookieParser('betajithisisvarun'));
+app.use(cookieParser('betajithisisvarun')); 
 
 app.use(express.static('static'))
 
