@@ -1,6 +1,7 @@
 var express = require('express')
 var session = require('express-session')
 var hbs = require('express-handlebars');
+var badyParser = require('body-parser');
 var config = require('./config')
 var helmet = require('helmet')
 var app = express()
@@ -22,6 +23,8 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cookieParser('betajithisisvarun'));
 
 app.use(express.static('static'))
