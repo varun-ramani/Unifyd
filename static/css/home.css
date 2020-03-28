@@ -1,0 +1,9 @@
+body {
+    background-color: var(--color-background-primary-dark) !important;
+}
+
+.hometitle {
+    padding-top: 5%;
+    color: var(--color-content-primary-dark);
+    font-family: Poppins;
+}

@@ -1,7 +1,7 @@
 var express = require('express')
 var session = require('express-session')
 var hbs = require('express-handlebars');
-var badyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var config = require('./config')
 var helmet = require('helmet')
 var app = express()
@@ -12,7 +12,7 @@ var cookieParser = require('cookie-parser');
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 app.engine('handlebars', hbs({
-    defaultLayout: 'default',
+    defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: __dirname + '/views/partials'
 }));
@@ -58,8 +58,12 @@ app.use(flash())
 app.use((req, res, next) => {
     //Use this middleware section for handling user auth and session stuff
 
-})
-app.use('/', routes)
+    next()
+});
+
+
+
+app.use('/', routes);
 
 app.use(function (req, res) {
     res.status(404)
@@ -73,6 +77,6 @@ app.use(function (error, req, res, next) {
 
 dbSetup.connectToServer(function (err, client) {
     app.listen(config.port, function () {
-        console.log('Listening on port ' + config.port + '...')
-    })
+        console.log('Listening on port ' + config.port + '...');
+    });
 });

@@ -1,0 +1,26 @@
+:root {
+    --color-green: #0fff00;
+    --color-blue: #0e01ff;
+    --color-aqua: #00e7fb;
+    --color-purple: #f900ec;
+    --color-red: #ff003a;
+    --color-yellow: #fce500;
+    --color-orange: #ff9b00;
+    /* --color-bluegrey: #000E19; */
+    --color-bluegrey: rgb(15, 15, 30);
+    --color-bluegrey2: rgb(25, 25, 50);
+
+    --color-background-primary-dark: rgb(50, 50, 70);
+    --color-background-secondary-dark: rgb(30, 30, 50);
+    --color-background-primary-light: rgb(230, 230, 230);
+    --color-background-secondary-light: rgb(255, 255, 255);
+
+    --color-content-primary-dark: rgb(250, 250, 250);
+    --color-content-secondary-dark: rgb(180, 180, 200);
+
+    --color-placeholder-light: rgb(130, 130, 130);
+    --color-accent-primary: rgb(96, 194, 99);
+
+
+
+}

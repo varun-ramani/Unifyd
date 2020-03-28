@@ -1,0 +1,80 @@
+.authcard {
+    background-color: var(--color-background-secondary-light);
+    border-radius: 0.5rem;
+    padding-bottom: 2rem;
+}
+
+.authcard h1 {
+    color: var(--color-content-primary-light);
+    font-family: Poppins;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+.authcard form {
+    padding-top: 0.5rem;
+}
+
+.authcard input {
+    border-radius: 0.3rem;
+    border-color: rgb(230, 230, 240);
+    border-width: 0.05rem;
+    margin-top: 1rem;
+}
+
+.authcard input:focus {
+    border-color: var(--color-accent-primary) !important;
+    border-width: 0.25rem !important;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.authcard ::placeholder {
+    color: var(--color-placeholder-light) !important;
+    font-family: "Roboto Condensed" !important;
+    font-size: 1rem;
+}
+
+.authcard button {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+}
+
+#login-card {
+    display: none;
+    animation: displayLogin 0.5s;
+}
+
+@keyframes displayLogin {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#auth-status {
+    font-family: Poppins;
+    padding-top: 1rem;
+    display: none;
+    animation: displayAuthStatus 0.5s;
+}
+
+@keyframes displayAuthStatus {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

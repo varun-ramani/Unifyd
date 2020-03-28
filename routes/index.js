@@ -3,7 +3,8 @@ var router = express.Router();
 var config = require('../config')
 
 router.all('/', function (req, res) {
-    return res.send('home')
+    console.log("yee");
+    res.render('index');
 });
 
 // router.all('/login', require('./login'))
