@@ -56,7 +56,7 @@ app.use((req, res, next) => {
     //Use this middleware section for handling user auth and session stuff
 
 })
-// app.use('/', routes)
+app.use('/', routes)
 
 app.use(function (req, res) {
     res.status(404)
