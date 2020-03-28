@@ -1,0 +1,23 @@
+{
+  "name": "hoohacks2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://varun-ramani@github.com/varun-ramani/HooHacks2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/varun-ramani/HooHacks2020/issues"
+  },
+  "homepage": "https://github.com/varun-ramani/HooHacks2020#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.0"
+  }
+}
