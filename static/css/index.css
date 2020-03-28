@@ -34,3 +34,9 @@ header {
         margin-top: 0rem;
     }
 }
+
+.form-check > * {
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+}

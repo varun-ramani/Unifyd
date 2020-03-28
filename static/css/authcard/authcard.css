@@ -47,6 +47,12 @@
     border-radius: 0.3rem;
 }
 
+.authcard p {
+    color: var(--color-content-primary-light);
+    font-family: Poppins;
+    font-size: 1.2rem;
+}
+
 #login-card {
     display: none;
     animation: displayLogin 0.5s;

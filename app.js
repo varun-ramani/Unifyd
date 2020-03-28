@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var config = require('./config')
 var helmet = require('helmet')
 var app = express()
-var routes = require('./routes/index')
 var dbSetup = require('./database/setup');
 var flash = require('connect-flash')
 var cookieParser = require('cookie-parser');
@@ -23,11 +22,11 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(cookieParser('betajithisisvarun'));
 
-app.use(express.static('static'))
+app.use('/static', express.static('static'));
 
 var store = new MongoDBStore(
     {
@@ -62,8 +61,11 @@ app.use((req, res, next) => {
 });
 
 
+var indexRoutes = require('./routes/index');
+var apiRoutes = require('./routes/authentication');
+app.use('/', indexRoutes);
+app.use('/api/auth', apiRoutes);
 
-app.use('/', routes);
 
 app.use(function (req, res) {
     res.status(404)

@@ -10,17 +10,34 @@ var signupCard = document.getElementById('signup-card');
 
 var authStatus = document.getElementById("auth-status");
 
+var userType = "";
+
+function selectUsertype(_userType) {
+    userType = _userType;
+    switch(_userType) {
+        case 'buyer':
+            document.getElementById('buyer-selector').classList.replace('btn-secondary', 'btn-primary');
+            document.getElementById('seller-selector').classList.replace('btn-primary', 'btn-secondary');
+            break;
+        case 'seller':
+            document.getElementById('seller-selector').classList.replace('btn-secondary', 'btn-primary');
+            document.getElementById('buyer-selector').classList.replace('btn-primary', 'btn-secondary');
+            break;
+    }
+}
+
 function signup() {
     var email = signupEmail.value;
     var name = signupName.value;
     var password = signupPassword.value;
 
-    fetch('/api/signup', {
+    fetch('/api/auth/signup', {
         "method": "POST",
         "body": JSON.stringify({
             "email": email,
             "password": password,
-            "name": name
+            "name": name,
+            "userType": userType
         })
     })
     .then(response => response.json())
@@ -43,7 +60,7 @@ function login() {
     var email = loginEmail.value;
     var password = loginPassword.value;
 
-    fetch('/api/login', {
+    fetch('/api/auth/login', {
         "method": "POST",
         "body": JSON.stringify({
             "email": email,
