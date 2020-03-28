@@ -17,8 +17,20 @@
   },
   "homepage": "https://github.com/varun-ramani/HooHacks2020#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.2.0",
+    "cookie-parser": "^1.4.4",
+    "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.0",
-    "mongodb": "^3.5.5"
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.2",
+    "handlebars": "^4.4.5",
+    "helmet": "^3.21.2",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.6",
+    "nodemon": "^1.19.2",
+    "path": "^0.12.7",
+    "seeded-hashids": "^1.6.2"
   }
 }
