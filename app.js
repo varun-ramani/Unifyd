@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
-app.use(cookieParser('betajithisisvarun')); 
+app.use(cookieParser('betajithisisvarun'));
 
 app.use(express.static('static'))
 
@@ -69,7 +69,7 @@ app.use(function (error, req, res, next) {
 });
 
 dbSetup.connectToServer(function (err, client) {
-    app.listen(config.express.port, function () {
-        console.log('Listening on port ' + config.express.port + '...')
+    app.listen(config.port, function () {
+        console.log('Listening on port ' + config.port + '...')
     })
 });
