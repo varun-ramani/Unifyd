@@ -20,13 +20,7 @@ router.all("/products", function (req, res) {
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
-<<<<<<< HEAD
         nav: req.nav,
-=======
-        js: [],
-        nav: req.nav,
-        messages: req.flash('notif')
->>>>>>> 8538feb5f6ab80902dea2254eb28cd36d868be61
     }
     res.render('products', data);
 })
