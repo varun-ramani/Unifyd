@@ -12,7 +12,6 @@ body {
     animation: introduceHeader 0.5s;
 
 }
-
 #recents-headline {
     color: var(--color-content-primary-dark);
     font-family: Poppins;
@@ -22,7 +21,6 @@ body {
     animation: introduceHeader 0.5s;
 
 }
-
 .card {
     transform: scale(0.8);
     border-radius: 1rem;
