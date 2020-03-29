@@ -141,10 +141,10 @@ function displayRegister() {
 }
 
 function goBack() {
-    signupCard.style.display = "block";
+    signupCard.style.display = null;
     buyerSignup.style.display = "none";
     sellerSignup.style.display = "none";
-    userTypeSelect.style.display = "block";
+    userTypeSelect.style.display = null;
     createAccount.style.display = "none";
     signupOpts.style.display = "none";
     loginOpts.style.display = "none";
