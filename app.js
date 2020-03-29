@@ -9,6 +9,7 @@ var dbSetup = require('./database/setup');
 var flash = require('connect-flash')
 var cookieParser = require('cookie-parser')
 var MongoDBStore = require('connect-mongodb-session')(session)
+var dbUsers = require('./database/users')
 
 app.engine('handlebars', hbs({
     defaultLayout: 'main',
@@ -58,29 +59,42 @@ app.use(session({
 
 app.use(flash());
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
     // Use this middleware section for handling user auth and session stuff
     req.nav = {}
     console.log(req.session)
-    if (req.session.email) {
-        if (req.session.type == 'buyer') {
-            req.nav.login = false
-            req.nav.dashboard = true
-            req.nav.prof = true
-            req.nav.products = true
-        } else if (req.session.type == 'seller') {
-            req.nav.login = false
-            req.nav.dashboard = true
-            req.nav.prof = true
-            req.nav.products = true
+
+    if (req.session.user && req.session.user.email) {
+        dbres = await dbUsers.getUser({ 'email': req.session.user.email })
+        if (dbres.res) {
+            req.session.user = {
+                email: dbres.res.email,
+                name: dbres.res.name,
+                type: dbres.res.type
+            }
+            if (req.session.type == 'buyer') {
+                req.nav.login = false
+                req.nav.dashboard = true
+                req.nav.prof = true
+                req.nav.products = true
+                return next()
+            } else if (req.session.type == 'seller') {
+                req.nav.login = false
+                req.nav.dashboard = true
+                req.nav.prof = true
+                req.nav.products = true
+                return next()
+            }
         } else {
-            req.nav.login = true
-            req.nav.dashboard = false
-            req.nav.prof = false
-            req.nav.products = false
+            req.session.user = null
         }
     }
-    next()
+
+    req.nav.login = true
+    req.nav.dashboard = false
+    req.nav.prof = false
+    req.nav.products = false
+    return next()
 });
 
 
