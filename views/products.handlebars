@@ -1,8 +1,33 @@
-<header>
-    <div class="container">
-        <h1 id="products-headline">Products</h1>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="container">
+    <br>
+    <h1 id="products-headline">Products</h1>
+    <br>
+
+    <div class="row" id="search">
+        {{!-- <div class="col-2">
+            <h1>Search</h1>
+        </div> --}}
+        <input class="form-control col-12" type="text" id="search-field" placeholder="Search For An Item" oninput="search()">
+    </div>
+
+    <br>
+
+    <div id="search-results">
+        <h1>Searching</h1>
+    </div>
+
+    <div id="products-content">
+        <div class="row" id="product-categories">
+
+                <button class="btn btn-outline-light text-center col">Cleaning</button>
+                <div class="col-1"></div>
+                <button class="btn btn-outline-warning text-center col">Food</button>
+                <div class="col-1"></div>
+                <button class="btn btn-outline-danger text-center col">Medical</button>
+                <div class="col-1"></div>
+                <button class="btn btn-outline-success text-center col">Bathroom</button>
+
+            {{!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box-part text-center">
                     <img class="svg-icons" src="../static/img/bucket.svg" />
                     <div class="title">
@@ -18,8 +43,8 @@
                         <h4>Food</h4>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            </div> --}}
+            {{!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box-part text-center">
                     <img class="svg-icons" style="width:60px" src="../static/img/film.svg" />
 
@@ -35,7 +60,7 @@
                         <h4>Medical</h4>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
-</header>
+</div>

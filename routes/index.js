@@ -21,7 +21,7 @@ router.all("/products", function (req, res) {
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
-        js: [],
+        js: ['/static/js/products.js'],
         nav: req.nav,
         messages: req.flash('notif')
     }
