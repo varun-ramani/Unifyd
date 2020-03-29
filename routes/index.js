@@ -18,7 +18,7 @@ router.use('/api/auth', require('./auth'));
 
 //secure
 router.use((req, res, next) => {
-    console.log("aab "+req.session.user)
+    console.log("aab " + req.session.user)
     if (req.session.user) {
         return next()
     } else {
@@ -49,7 +49,11 @@ router.all("/dashboard", function (req, res) {
         messages: req.flash('notif'),
         user: req.session.user
     }
-    return res.render('buyerdashboard', data);
+    if (req.session.user.type === 'vendor') {
+        return res.render('vendordashboard', data);
+    } else {
+        return res.render('buyerdashboard', data);
+    }
 });
 
 router.all("/analytics", function (req, res) {
