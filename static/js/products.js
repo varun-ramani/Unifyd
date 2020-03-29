@@ -46,6 +46,7 @@ function search() {
                 }
                 
                 newHTML += productTemplate
+                           .replace("imgsrc", "wigga")
                            .replace("productName", productList[index]['name'])
                            .replace("priceRange", productList[index]['priceRange'])
                            .replace("bootstrapColor", bootstrapColor)
