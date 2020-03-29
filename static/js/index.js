@@ -76,12 +76,6 @@ function signup() {
             if (responseJson['status'] === "register/success") {
                 authStatus.style.display = "block";
                 authStatus.innerHTML = "Thanks for registering! Go ahead and sign in.";
-            } else if (responseJson['status'] === "incomplete_fields") {
-                authStatus.style.display = "block";
-                authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
-            } else if (responseJson['status'] === "register/user_exists") {
-                authStatus.style.display = "block";
-                authStatus.innerHTML = "It looks like you already have an account! Did you forget your password?";
             } else {
                 authStatus.style.display = "block";
                 authStatus.innerHTML = responseJson['status'];
@@ -110,16 +104,7 @@ function login() {
                 document.cookie = `authtoken=${responseJson['authtoken']}; path=/`
                 authStatus.style.display = "block";
                 authStatus.innerHTML = "Let's go!";
-                location.href = "/home";
-            } else if (responseJson['status'] === "incomplete_fields") {
-                authStatus.style.display = "block";
-                authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
-            } else if (responseJson['status'] === "login/incorrect_email") {
-                authStatus.style.display = "block";
-                authStatus.innerHTML = "You don't seem to have an account registered to that email.";
-            } else if (responseJson['status'] === "login/incorrect_password") {
-                authStatus.style.display = "block";
-                authStatus.innerHTML = "That's the wrong password. Keep trying!";
+                location.href = "/dashboard";
             } else {
                 authStatus.style.display = "block";
                 authStatus.innerHTML = responseJson['status'];

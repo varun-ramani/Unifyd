@@ -12,13 +12,13 @@ router.post('/signup', async (req, res) => {
     if (userType === 'seller') {
         if (email === "" || password === "" || name === "") {
             return res.send({
-                "status": "incomplete_fields"
+                "status": "Some fields are incomplete."
             });
         }
     } else if (userType == 'buyer') {
         if (email === "" || password === "") {
             return res.send({
-                "status": "incomplete_fields"
+                "status": "Some fields are incomplete."
             });
         }
     } else {
@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
         });
     } else if (dbres.res) {
         return res.send({
-            "status": "register/user_exists"
+            "status": "This email is already in use. Try logging in!"
         });
     }
     bcrypt.hash(password, config.saltRounds)
@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
 
     if (email === "" || password === "") {
         return res.send({
-            "status": "incomplete_fields"
+            "status": "Some fields are incomplete."
         });
     }
     email = email.toLowerCase()
@@ -78,7 +78,6 @@ router.post('/login', async (req, res) => {
             "status": "Not a valid email."
         });
     }
-
     dbres = await dbUsers.getUser({ 'email': email })
     if (dbres.status === 'error') {
         return res.send({
@@ -91,12 +90,15 @@ router.post('/login', async (req, res) => {
         });
     } else {
         bcrypt.compare(password, dbres.res.password, function (err, result) {
-            if(err){
+            if (err) {
                 return res.send({
                     "status": "Bcrypt error."
                 });
             }
             if (result) {
+                req.session.email = dbres.res.email
+                req.session.name = dbres.res.name
+                req.session.type = dbres.res.type
                 return res.send({
                     "status": "login/success"
                 });

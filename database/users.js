@@ -4,7 +4,7 @@ var mongo = require('./setup')
 db = {}
 
 db.addUser = function (data) {
-    user = { 'name': data.name, 'email': data.email, 'password': data.password }
+    user = { 'name': data.name, 'email': data.email, 'password': data.password, 'type': data.type }
     return new Promise(function (resolve, reject) {
         mongo.getDb().collection('users').insertOne(user, function (err, res) {
             if (err) {
