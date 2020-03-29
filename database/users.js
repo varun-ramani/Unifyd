@@ -1,6 +1,5 @@
 var config = require('../config')
 var mongo = require('./setup')
-var mongodb = require('mongodb');
 
 db = {}
 

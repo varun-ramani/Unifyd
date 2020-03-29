@@ -16,5 +16,6 @@ config.session = {
     rolling: true,
     saveUninitialized: false
 }
+config.saltRounds = 10
 
 module.exports = config
