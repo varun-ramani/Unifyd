@@ -18,7 +18,6 @@ router.use('/api/auth', require('./auth'));
 
 //secure
 router.use((req, res, next) => {
-
     if (req.session.email) {
         next()
     } else {
