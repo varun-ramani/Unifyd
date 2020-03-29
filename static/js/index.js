@@ -10,20 +10,23 @@ var signupCard = document.getElementById('signup-card');
 
 var authStatus = document.getElementById("auth-status");
 
+var userTypeSelect = document.getElementById("usertype-select");
+var buyerSignup = document.getElementById('buyer-signup');
+var sellerSignup = document.getElementById('seller-signup');
+
 var userType = "";
 
 function selectUsertype(_userType) {
     userType = _userType;
     switch(_userType) {
         case 'buyer':
-            document.getElementById('buyer-selector').classList.replace('btn-secondary', 'btn-primary');
-            document.getElementById('seller-selector').classList.replace('btn-primary', 'btn-secondary');
+            buyerSignup.style.display = "block";
             break;
         case 'seller':
-            document.getElementById('seller-selector').classList.replace('btn-secondary', 'btn-primary');
-            document.getElementById('buyer-selector').classList.replace('btn-primary', 'btn-secondary');
+            sellerSignup.style.display = "block";
             break;
     }
+    userTypeSelect.style.display = "none";
 }
 
 function signup() {

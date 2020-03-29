@@ -58,6 +58,11 @@
     animation: displayLogin 0.5s;
 }
 
+#buyer-signup, #seller-signup {
+    display: none;
+    animation: displayLogin 0.5s;
+}
+
 @keyframes displayLogin {
     from {
         opacity: 0;
