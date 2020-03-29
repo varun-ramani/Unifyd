@@ -3,25 +3,29 @@ var mongo = require('./setup')
 
 db = {}
 
-db.addUser = async function (data) {
+db.addUser = function (data) {
     user = { 'name': data.name, 'email': data.email, 'password': data.password }
-    await mongo.getDb().collection('users').insertOne(user, function (err, res) {
-        if (err) {
-            return { 'status': 'error' }
-        } else {
-            return { 'status': 'success' }
-        }
-    });
+    return new Promise(function (resolve, reject) {
+        mongo.getDb().collection('users').insertOne(user, function (err, res) {
+            if (err) {
+                resolve({ 'status': 'fail' })
+            } else {
+                resolve({ 'status': 'success' })
+            }
+        });
+    })
 }
 
-db.getUser = async function (data) {
+db.getUser = function (data) {
     search = { 'email': data.email }
-    await mongo.getDb().collection('users').findOne(search, function (err, result) {
-        if (err) {
-            return { 'status': 'error' }
-        } else {
-            return { 'status': 'success', 'res': result }
-        }
-    });
+    return new Promise(function (resolve, reject) {
+        mongo.getDb().collection('users').findOne(search, function (err, result) {
+            if (err) {
+                resolve({ 'status': 'fail' })
+            } else {
+                resolve({ 'status': 'success', res: result })
+            }
+        });
+    })
 }
 module.exports = db
