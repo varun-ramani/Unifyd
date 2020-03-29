@@ -13,7 +13,18 @@ var MongoDBStore = require('connect-mongodb-session')(session)
 app.engine('handlebars', hbs({
     defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layouts',
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: __dirname + '/views/partials',
+    helpers: {
+        equals: function (lvalue, rvalue, options) {
+            if (arguments.length < 3)
+                throw new Error("Handlebars Helper equal needs 2 parameters");
+            if (lvalue != rvalue) {
+                return options.inverse(this);
+            } else {
+                return options.fn(this);
+            }
+        }
+    }
 }));
 app.set('view engine', 'handlebars');
 app.use(helmet())
@@ -48,8 +59,27 @@ app.use(session({
 app.use(flash());
 
 app.use((req, res, next) => {
-    //Use this middleware section for handling user auth and session stuff
-
+    // Use this middleware section for handling user auth and session stuff
+    req.nav = {}
+    console.log(req.session)
+    if (req.session.email) {
+        if (req.session.type == 'buyer') {
+            req.nav.login = false
+            req.nav.dashboard = true
+            req.nav.prof = true
+            req.nav.products = true
+        } else if (req.session.type == 'seller') {
+            req.nav.login = false
+            req.nav.dashboard = true
+            req.nav.prof = true
+            req.nav.products = true
+        } else {
+            req.nav.login = true
+            req.nav.dashboard = false
+            req.nav.prof = false
+            req.nav.products = false
+        }
+    }
     next()
 });
 

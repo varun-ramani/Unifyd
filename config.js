@@ -9,7 +9,7 @@ config.database = {
 config.session = {
     secret: "unifydisbae",
     cookie: {
-        maxAge: 1000 * 60 * 10,
+        maxAge: 1000 * 60 * 30,
         sameSite: true
     },
     resave: true,
