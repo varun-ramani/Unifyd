@@ -1,6 +1,9 @@
-var signupEmail = document.getElementById('signup-email');
-var signupName = document.getElementById('signup-name');
-var signupPassword = document.getElementById('signup-password');
+var sellerSignupEmail = document.getElementById('seller-signup-email');
+var sellerSignupName = document.getElementById('seller-signup-name');
+var sellerSignupPassword = document.getElementById('seller-signup-password');
+
+var buyerSignupEmail = document.getElementById('buyer-signup-email');
+var buyerSignupPassword = document.getElementById('buyer-signup-password');
 
 var loginEmail = document.getElementById("login-email");
 var loginPassword = document.getElementById("login-password");
@@ -30,21 +33,31 @@ function selectUsertype(_userType) {
 }
 
 function signup() {
-    var email = signupEmail.value;
-    var name = signupName.value;
-    var password = signupPassword.value;
+    var body = "";
+    
+    switch (userType) {
+        case 'buyer':
+            body = JSON.stringify({
+                "email": buyerSignupEmail.value,
+                "password": buyerSignupPassword.value
+            });
+            break;
+        case 'seller':
+            body = JSON.stringify({
+                "email": sellerSignupEmail.value,
+                "password": sellerSignupPassword.value,
+                "name": sellerSignupName.value
+            });
+            break;
+    }
+
 
     fetch('http://localhost:3000/api/auth/signup', {
         "method": "POST",
         "headers": {
             "Content-Type": "application/json"
         },
-        "body": JSON.stringify({
-            "email": email,
-            "password": password,
-            "name": name,
-            "userType": userType
-        })
+        "body": body
     })
     .then(response => response.json())
     .then(responseJson => {
