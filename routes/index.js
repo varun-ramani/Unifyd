@@ -9,23 +9,25 @@ router.all('/', function (req, res) {
         js: ['/static/js/index.js'],
         nav: req.nav,
         messages: req.flash('notif'),
-        user: { name: req.session.name, email: req.session.email, type: req.session.type }
+        user: req.session.user
     }
     return res.render('index', data)
 });
 
 router.use('/api/auth', require('./auth'));
-router.use('/api/products', require('./products'))
 
 //secure
 router.use((req, res, next) => {
-
-    if (req.session.email) {
-        next()
+    console.log(req.session)
+    if (req.session.user) {
+        return next()
     } else {
         return res.redirect('/')
     }
 });
+
+router.use('/api/products', require('./products'))
+
 router.all("/products", function (req, res) {
     data = {
         title: 'Products',
@@ -33,7 +35,7 @@ router.all("/products", function (req, res) {
         js: ['/static/js/handlebars.js', '/static/js/products.js'],
         nav: req.nav,
         messages: req.flash('notif'),
-        user: { name: req.session.name, email: req.session.email, type: req.session.type }
+        user: req.session.user
     }
     return res.render('products', data)
 });
@@ -44,7 +46,8 @@ router.all("/dashboard", function (req, res) {
         css: ['/static/css/dashboard.css'],
         js: ['/static/js/products.js'],
         nav: req.nav,
-        messages: req.flash('notif')
+        messages: req.flash('notif'),
+        user: req.session.user
     }
     return res.render('buyerdashboard', data);
 });
@@ -56,7 +59,7 @@ router.all("/analytics", function (req, res) {
         css: [],
         js: [],
         messages: req.flash('notif'),
-        user: { name: req.session.name, email: req.session.email, type: req.session.type }
+        user: req.session.user
     }
     return res.render('analytics', data);
 })

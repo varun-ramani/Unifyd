@@ -5,7 +5,7 @@ const config = require('../config')
 const dbUsers = require('../database/users')
 const utils = require('../utils')
 router.post('/signup', async (req, res) => {
-    if (req.session.email) {
+    if (req.session.user) {
         return res.send({
             "status": "Already logged in."
         });
@@ -69,7 +69,7 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    if (req.session.email) {
+    if (req.session.user) {
         return res.send({
             "status": "Already logged in."
         });
@@ -106,9 +106,11 @@ router.post('/login', async (req, res) => {
                 });
             }
             if (result) {
-                req.session.email = dbres.res.email
-                req.session.name = dbres.res.name
-                req.session.type = dbres.res.type
+                req.session.user = {
+                    email: dbres.res.email,
+                    name: dbres.res.name,
+                    type: dbres.res.type
+                }
                 return res.send({
                     "status": "login/success"
                 });
