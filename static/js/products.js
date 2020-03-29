@@ -45,6 +45,7 @@ function search() {
                         .replace(/limit/g, productList[index]['limit'])
                         .replace(/CarImg/g, carimg)
                         .replace(/style="display: none"/g, "")
+                        .replace(/itemOid/g, productList[index]["itemOid"]);
                 }
 
 
@@ -53,6 +54,24 @@ function search() {
             });
 
     }
+}
+
+function addItem(modalNum, itemOid) {
+    var priceInput = document.getElementById(`modal-${modalNum}-price`);
+    var quantityInput = document.getElementById(`modal-${modalNum}-quantity`);
+    fetch("/api/cart/addItem", {
+        "method": "POST",
+        "body": JSON.stringify({
+            'price': priceInput.value,
+            'quantity': quantityInput.value,
+            'itemOid': itemOid
+        }),
+        "headers": {
+            "Content-type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(responseJson => console.log(responseJson));
 }
 
 fetch("/api/products/popular")
