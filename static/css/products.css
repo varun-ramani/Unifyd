@@ -21,7 +21,7 @@ body {
 }
 
 ::placeholder {
-    color: black;
+    color: red;
     opacity: 1;
 }
 

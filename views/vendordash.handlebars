@@ -2,122 +2,332 @@
     <br>
     <h1 id="products-headline">Vendor Dashboard</h1>
     <br>
-
-    <div class="row" id="search">
-        {{#equals user.type "buyer"}}
-        <input class="form-control col-12" type="text" id="search-field" placeholder="What do you need?"
-            oninput="search()">
-        {{/equals}}
-        {{#equals user.type "vendor"}}
-        <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
-            oninput="search()">
-        {{/equals}}
-    </div>
-
-    <br>
-
-
-    <div id="search-results" class="row">
-    </div>
-
-    <div id="products-content" class="">
-        <div class="row " id="popular-now"></div>
-    </div>
-
-</div>
-
-<div id="products-template" style="display: none">
-    <div id="" class="col col-md-3">
-        <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-            <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#modalNum">
-
-                <div class="img-hover-zoom m-0">
-                    <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                </div>
-                <div class="card-body">
-                    <h4 style="color: white" class="card-title">productName</h4>
-                    <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                    <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                        class="card-text"><i>description</i></p>
-                </div>
-            </a>
+    <div class="row">
+        <a class="btn col col-4 btn-success" data-toggle="modal" data-target="#add-product" role="button">Add Product</a>
+        <div class="col col-8" id="search">
+            <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
+                oninput="search()">
         </div>
     </div>
-
-
-    <div class="modal fade" id="modalNum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        style="background-color: rgb(53, 53, 78, 0.9);" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content" style="background-color:rgb(216, 216, 230)">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <!--Carousel Wrapper-->
-                            <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails"
-                                data-ride="carousel">
-                                <!--Slides-->
-                                <div class="carousel-inner" role="listbox">
-                                    carousel-items
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100"
-                                            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(23).jpg"
-                                            alt="First slide">
-                                    </div>
-                                </div>
-                                <ol class="carousel-indicators">
-                                    carousel-indicators
-                                    <li data-target="#carousel-thumb" data-slide-to="0" class="active">
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(23).jpg"
-                                            width="60">
-                                    </li>
-
-                                </ol>
-                                <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                            <!--/.Carousel Wrapper-->
+    <br>
+    <div id="search-results" class="row">
+    </div>
+    <div id="other-content" class="">
+        <div clas="row">
+            <div class="col align-self-start">
+                <h1 class="recents-headline">
+                    Placed Orders
+                </h1>
+            </div>
+        </div>
+        <div id="box">
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style="border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
                         </div>
-                        <div class="col-lg-7">
-                            <h2 class="h2-responsive product-name">
-                                <strong>productName</strong>
-                            </h2>
-                            <h4 class="h4-responsive">
-                                <span class="green-text">
-                                    <strong>priceStart - priceEnd</strong>
-                                </span>
-                            </h4>
-                            <p>description</p>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="" class="col col-md-3">
+                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
+                        data-target="#modalNum">
+                        <div class="img-hover-zoom m-0">
+                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                        </div>
+                        <div class="card-body">
+                            <h4 style="color: white" class="card-title">productName</h4>
+                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                                class="card-text"><i>description</i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div clas="row">
+            <div class="col align-self-start">
+                <h1 class="recents-headline">
+                    Transaction History
+                </h1>
+            </div>
+        </div>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Order #</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Buyer</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Hand Sanitzer</td>
+                    <td>Target</td>
+                    <td>$3000</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Bread</td>
+                    <td>Costco</td>
+                    <td>$20</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Toilet Paper</td>
+                    <td>Walmart</td>
+                    <td>$50000</td>
+                </tr>
+            </tbody>
+        </table>
 
-                            <div class="card-body align-text-bottom">
-                                <div class="row col-md-12">
-                                    <div class="form-group col-md-6 ">
-                                        <label for="">Price</label>
-                                        <input type="number" class="form-control" min="priceStart" max="priceEnd">
+    </div>
+
+    <div id="products-template" style="display: none">
+        <div id="" class="col col-md-3">
+            <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
+                <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#modalNum">
+
+                    <div class="img-hover-zoom m-0">
+                        <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: white" class="card-title mb-1">productName</h4>
+                        categories
+                        <h5 style="color: white" class="card-text mt-1">$priceStart-$priceEnd</h5>
+                        <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
+                            class="card-text"><i>description</i></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    <div class="modal fade right" id="add-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Feedback request
+                </p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+
+                    <!--Body-->
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>
+                    <p>
+                        <strong>Your opinion matters</strong>
+                    </p>
+                    <p>Have some ideas how to improve our product?
+                        <strong>Give us your feedback.</strong>
+                    </p>
+                </div>
+
+                <hr>
+
+                <!-- Radio -->
+                <p class="text-center">
+                    <strong>Your rating</strong>
+                </p>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
+                    <label class="form-check-label" for="radio-179">Very good</label>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
+                    <label class="form-check-label" for="radio-279">Good</label>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
+                    <label class="form-check-label" for="radio-379">Mediocre</label>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
+                    <label class="form-check-label" for="radio-479">Bad</label>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
+                    <label class="form-check-label" for="radio-579">Very bad</label>
+                </div>
+                <!-- Radio -->
+
+                <p class="text-center">
+                    <strong>What could we improve?</strong>
+                </p>
+                <!--Basic textarea-->
+                <div class="md-form">
+                    <textarea type="text" id="form79textarea" class="md-textarea form-control" rows="3"></textarea>
+                    <label for="form79textarea">Your message</label>
+                </div>
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary waves-effect waves-light">Send
+                    <i class="fa fa-paper-plane ml-1"></i>
+                </a>
+                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalNum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            style="background-color: rgb(53, 53, 78, 0.9);" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content" style="background-color:rgb(216, 216, 230)">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <!--Carousel Wrapper-->
+                                <div id="carousel-thumbNum" class="carousel slide carousel-fade carousel-thumbnails"
+                                    data-ride="carousel">
+                                    <!--Slides-->
+                                    <div class="carousel-inner" role="listbox">
+                                        CarImg
                                     </div>
-                                    <div class="form-group col-md-6 ">
-                                        <label for="">Quantity (max limit)</label>
-                                        <input type="number" class="form-control" min="1" max="limit">
-                                    </div>
+                                    {{!-- <ol class="carousel-indicators" id="modalcarouselnum">
+                                    CarInd
+                                </ol> --}}
+                                    <a class="carousel-control-prev" href="#carousel-thumbNum" role="button"
+                                        data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carousel-thumbNum" role="button"
+                                        data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                 </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-outline-secondary "
-                                        data-dismiss="modal">Close</button>
-                                    <button class="btn btn-primary">Add to cart
-                                        <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
-                                    </button>
-                                </div>
+                                <!--/.Carousel Wrapper-->
                             </div>
+                            <div class="col-lg-7">
+                                <h2 class="h2-responsive product-name">
+                                    <strong><input class="form-control form-control-lg" type="text" value="productName">
+                                    </strong>
+                                </h2>
+                                categories
+                                <h4 class="h4-responsive">
+                                    <span class="green-text">
+                                        <strong><input class="form-control" type="text" value="priceStart">
+                                            - <input class="form-control" type="text" value="priceEnd">
+                                        </strong>
+                                    </span>
+                                </h4>
+                                <p><input class="form-control" type="text" value="description"></p>
 
+                                <div class="card-body align-text-bottom">
+                                    <div class="row col-md-12">
+                                        <div class="form-group col-md-6 ">
+                                            <label for="">Price</label>
+                                            <input type="number" class="form-control" min="priceStart" max="priceEnd">
+                                        </div>
+                                        <div class="form-group col-md-6 ">
+                                            <label for="">Quantity (limit max)</label>
+                                            <input type="number" class="form-control" min="1" max="limit"
+                                                onchange="validate()">
+                                        </div>
+                                    </div>
+                                    <script>
+
+                                    </script>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-outline-secondary "
+                                            data-dismiss="modal">Close</button>
+                                        <button class="btn btn-primary">Add to cart
+                                            <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

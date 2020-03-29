@@ -4,7 +4,10 @@ var popularNow = document.getElementById('popular-now');
 var productsContent = document.getElementById("products-content");
 
 var productTemplate = document.getElementById('products-template').innerHTML;
-
+function categoryclick(a) {
+    searchField.value = a
+    search()
+}
 function search() {
     var value = searchField.value;
     if (value === "") {

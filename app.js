@@ -66,7 +66,6 @@ app.use(flash());
 app.use(async (req, res, next) => {
     // Use this middleware section for handling user auth and session stuff
     req.nav = {}
-    console.log(req.session)
 
     if (req.session.user) {
         if (req.session.user.email) {

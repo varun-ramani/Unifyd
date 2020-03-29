@@ -73,11 +73,22 @@ db.updateProduct = function (data) {
 db.searchProduct = function (data) {
     query = new RegExp(data.search, "i")
     return new Promise(function (resolve, reject) {
-        mongo.getDb().collection('products').aggregate([
-            { $match: { $or: [{ "name": { $regex: query } }, { "description": { $regex: query } }] } }
+        mongo.getDb().collection('products').aggregate([{
+            "$addFields": {
+                "concatcategories": {
+                    $reduce: {
+                        input: "$categories",
+                        initialValue: "",
+                        in: { $concat: ["$$value", "$$this"] }
+                    }
+                }
+            }
+        },
+        { $match: { $or: [{ "name": { $regex: query } }, { "description": { $regex: query } }, { "concatcategories": { $regex: query } }] } },
         ]).limit(50).toArray().then((res) => {
-            resolve({ 'status': 'success' })
+            resolve({ 'status': 'success', res: res})
         }).catch((err) => {
+            console.log(err)
             resolve({ 'status': 'fail' })
         })
 

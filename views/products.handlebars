@@ -5,30 +5,32 @@
 
     <div class="row" id="search">
         {{#equals user.type "buyer"}}
-        <input class="form-control col-12" type="text" id="search-field" placeholder="What do you need?"
-            oninput="search()">
+        <label for="search-field" style="color:white">Search for products</label>
+        <input class="form-control" type="text" id="search-field"
+            onchange="search()" placeholder="What do you need?">
         {{/equals}}
         {{#equals user.type "vendor"}}
+        <label for="search-field" style="color:white">Search for products</label>
         <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
-            oninput="search()">
+            onchange="search()">
         {{/equals}}
     </div>
 
     <br>
 
-    <div id="search-results" class="row">
+    <div id="search-results" class="row"> 
     </div>
 
     <div id="products-content" class="">
         <div class="row" id="product-categories">
 
-            <button class="btn btn-outline-light text-center col">Cleaning</button>
+            <button class="btn btn-outline-light text-center col" onclick="categoryclick('cleaning')">Cleaning</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-warning text-center col">Food</button>
+            <button class="btn btn-outline-warning text-center col" onclick="categoryclick('food')">Food</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-danger text-center col">Medical</button>
+            <button class="btn btn-outline-danger text-center col" onclick="categoryclick('medical')">Medical</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-success text-center col">Bathroom</button>
+            <button class="btn btn-outline-success text-center col" onclick="categoryclick('clothing')">Clothing</button>
 
         </div>
 
@@ -103,7 +105,7 @@
                                 </span>
                             </h4>
                             <p>description</p>
-
+                            {{#equals user.type "buyer"}}
                             <div class="card-body align-text-bottom">
                                 <div class="row col-md-12">
                                     <div class="form-group col-md-6 ">
@@ -127,7 +129,7 @@
                                     </button>
                                 </div>
                             </div>
-
+                            {{/equals}}
                         </div>
                     </div>
                 </div>

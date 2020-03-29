@@ -18,7 +18,6 @@ router.use('/api/auth', require('./auth'));
 
 //secure
 router.use((req, res, next) => {
-    console.log("aab " + req.session.user)
     if (req.session.user) {
         return next()
     } else {
@@ -94,7 +93,7 @@ router.all("/cart", function(req,res){
     data = {
         title: 'Cart',
         css: ['/static/css/cart.css'],
-        js: ['/static/js/cart.js'],
+        js: ['static/js/handlebars.js','/static/js/cart.js'],
         nav: req.nav,
         messages: req.flash('notif'),
         user: req.session.user,
