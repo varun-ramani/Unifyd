@@ -2,36 +2,45 @@
 
 <html>
 
-        <title>Unifyd</title>
-        <link rel="stylesheet" href="/static/css/index.css">
-        <link rel='stylesheet' href="/static/css/navbar/navbar.css">
-        <link rel='stylesheet' href="/static/css/colors.css">
-        <link rel='stylesheet' href="/static/css/authcard/authcard.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Roboto+Condensed&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Unifyd</title>
+<link rel='stylesheet' href="/static/css/navbar/navbar.css">
+<link rel='stylesheet' href="/static/css/colors.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Roboto+Condensed&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Unifyd | {{title}}</title>
-    {{!-- <meta property="og:image" content="" /> --}}
-    <meta property="og:description" content="A democratized marketplace for disasters." />
-    {{!-- <meta property="og:url" content="" /> --}}
-    <meta property="og:title" content="Unifyd" />
-    <link rel='stylesheet' href="/static/css/navbar/navbar.css">
-    <link rel='stylesheet' href="/static/css/colors.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Roboto+Condensed&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    {{#each css}}
-    <link rel='stylesheet' href="{{this}}">
-    {{/each}}
+<title>Unifyd | {{title}}</title>
+{{!-- <meta property="og:image" content="" /> --}}
+<meta property="og:description" content="A democratized marketplace for disasters." />
+{{!-- <meta property="og:url" content="" /> --}}
+<meta property="og:title" content="Unifyd" />
+<link rel='stylesheet' href="/static/css/navbar/navbar.css">
+<link rel='stylesheet' href="/static/css/colors.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Roboto+Condensed&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+{{#each css}}
+<link rel='stylesheet' href="{{this}}">
+{{/each}}
 </head>
-
 {{> navbar}}
 
-{{{body}}}
+{{#each messages}}
+<div aria-live="polite" style="position: absolute; min-height: 200px; right: 0px; z-index: 99" class="mt-4 mr-4">
+    <div class="toast mx-3" style="position: relative; ">
+        <button type="button" class="mx-2 my-2 close" data-dismiss="toast" aria-label="Close">
+            <span>&times;</span>
+        </button>
+        <div class="toast-body">
+            {{this}}
+        </div>
+    </div>
+</div>
+{{/each}}
 
+{{{body}}}
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -41,9 +50,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+<script>
+    $('.toast').toast({ delay: 6000 })
+    $('.toast').toast('show')
+</script>
+
 {{#each js}}
 <script src="{{this}}"></script>
 {{/each}}
-
 
 </html>
