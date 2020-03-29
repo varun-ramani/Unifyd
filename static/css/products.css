@@ -137,6 +137,14 @@ body {
     display: block;
 }
 
+#search-field {
+    background-color: rgba(255,255,255,0.3); color: white;
+}
+
+#product-template{
+    display: none;
+}
+
 .productcard:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
