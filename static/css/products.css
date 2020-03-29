@@ -1,7 +1,6 @@
 body {
     background-color: var(--color-background-primary-dark) !important;
 }
-
 .box {
     padding: 60px 0px;
 }
@@ -16,12 +15,11 @@ body {
 
 }
 .box-part {
-    background: #FFF;
-    border-radius: 0;
-    padding: 60px 10px;
+    background-color: var(--color-placeholder-light) !important;
+    border-radius: 20px;
+    padding: 60px 60px;
     margin: 30px 0px;
 }
-
 
 .text {
     font-size: 15px;
