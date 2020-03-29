@@ -83,7 +83,18 @@ router.all("/dashboard", function (req, res) {
         return res.render('buyerdash', data);
     }
 });
-
+router.all("/cart", function(req,res){
+    data = {
+        title: 'Cart',
+        css: ['/static/css/cart.css'],
+        js: ['/static/js/cart.js'],
+        nav: req.nav,
+        messages: req.flash('notif'),
+        user: req.session.user
+    }
+    return res.render('cart', data);
+   
+})
 router.all("/analytics", function (req, res) {
     data = {
         title: 'Analytics',
