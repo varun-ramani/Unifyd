@@ -14,16 +14,18 @@ router.all('/', function (req, res) {
     return res.render('index', data);
 });
 
-router.all('/api/auth', require('./auth'))
+router.use('/api/auth', require('./auth'));
 
 router.all("/products", function (req, res) {
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
+        js: [],
         nav: req.nav,
+        messages: req.flash('notif')
     }
     res.render('products', data);
-})
+});
 // router.all('/logout', function (req, res) {
 //     if (req.session) {
 //         req.session.destroy(err => {
