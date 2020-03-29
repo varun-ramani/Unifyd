@@ -7,7 +7,8 @@ router.all('/', function (req, res) {
         title: 'Home',
         css: ['/static/css/authcard/authcard.css', '/static/css/index.css'],
         js: ['/static/js/index.js'],
-
+        nav: req.nav,
+        flashes: req.flash('messages')
     }
     res.render('index', data);
 });
