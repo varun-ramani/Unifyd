@@ -78,7 +78,7 @@ function login() {
         if (responseJson['status'] === "login/success") {
             document.cookie = `authtoken=${responseJson['authtoken']}; path=/`
             authStatus.style.display = "block";
-            authStatus.innerHTML = "It's time to learn more cool stuff!";
+            authStatus.innerHTML = "Let's go!";
             location.href = "/home";
         } else if (responseJson['status'] === "incomplete_fields") {
             authStatus.style.display = "block";
