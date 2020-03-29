@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/signup', (req, res) => {
-    
     var email = req.body['email'];
     var password = req.body['password'];
     var name = req.body['name'];
