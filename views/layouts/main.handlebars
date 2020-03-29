@@ -21,11 +21,22 @@
     <link rel='stylesheet' href="{{this}}">
     {{/each}}
 </head>
-
 {{> navbar}}
 
-{{{body}}}
+{{#each messages}}
+<div aria-live="polite" style="position: absolute; min-height: 200px; right: 5%; z-index: 99" class="">
+    <div class="toast mx-3" style="position: relative; ">
+        <button type="button" class="mx-2 my-2 close" data-dismiss="toast" aria-label="Close">
+            <span >&times;</span>
+        </button>
+        <div class="toast-body">
+            {{this}}
+        </div>
+    </div>
+</div>
+{{/each}}
 
+{{{body}}}
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>

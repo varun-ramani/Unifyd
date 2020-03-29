@@ -15,13 +15,10 @@ app.engine('handlebars', hbs({
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: __dirname + '/views/partials'
 }));
-
 app.set('view engine', 'handlebars');
 app.use(helmet())
 app.use(bodyParser.json());
-
 app.use(cookieParser('betajithisisvarun'));
-
 app.use('/static', express.static('static'));
 
 var store = new MongoDBStore(
@@ -36,7 +33,6 @@ var store = new MongoDBStore(
 store.on('error', function (error) {
     console.log(error)
 });
-
 app.use(session({
     secret: config.session.secret,
     cookie: {
@@ -48,7 +44,9 @@ app.use(session({
     rolling: config.session.rolling,
     saveUninitialized: config.session.saveUninitialized
 }));
+
 app.use(flash());
+
 app.use((req, res, next) => {
     //Use this middleware section for handling user auth and session stuff
 

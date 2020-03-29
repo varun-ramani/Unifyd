@@ -3,14 +3,16 @@ var router = express.Router();
 var config = require('../config')
 
 router.all('/', function (req, res) {
+    req.flash('notif', 'Welcome to Unifyd')
+    console.log(req.flash('notif'))
     data = {
         title: 'Home',
         css: ['/static/css/authcard/authcard.css', '/static/css/index.css'],
         js: ['/static/js/index.js'],
         nav: req.nav,
-        flashes: req.flash('messages')
+        messages: [ 'Welcome to Unifyd' ]
     }
-    res.render('index', data);
+    return res.render('index', data);
 });
 
 router.all('/api/auth', require('./auth'))
