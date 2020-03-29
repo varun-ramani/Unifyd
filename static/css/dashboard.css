@@ -20,21 +20,55 @@ body {
     animation: introduceHeader 0.5s;
 
 }
-
-.scrolly>.row {
-    overflow-x: auto;
-    white-space: nowrap;
+.card {
+    transform: scale(0.8);
+    border-radius: 1rem;
+    height: 20rem;
 }
 
-.scrolly>.row>.col {
-    display: inline-block;
-    float: none;
+.card-img-top {
+    border-radius: 1rem;
+    object-fit: cover;
+    margin-top: 1rem;
 }
-.col-xs-4 {
-    font-size: 48px;
-    padding-bottom: 20px;
-    padding-top: 18px;
-    margin: 10px;
-    width: 150px;
-    height: 100px;
+
+ .product-card {
+    margin: 0;
+    background-color: var(--color-background-secondary-light);
+    border-radius: 0.5rem;
+    padding-bottom: 2rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.product-card:hover {
+    opacity: 1;
+}
+/*
+.product-card h1 {
+    color: var(--color-content-primary-light);
+    font-family: Poppins;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+.product-card p {
+    color: var(--color-content-primary-light);
+    font-family: Poppins;
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+} */
+
+.horizontal {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.horizontal .imgs {
+    width: 6000px;
 }
