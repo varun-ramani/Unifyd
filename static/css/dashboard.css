@@ -1,0 +1,40 @@
+body {
+    background-color: var(--color-background-primary-dark) !important;
+}
+#dashboard-headline {
+    color: var(--color-content-primary-dark);
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 0rem;
+    animation: introduceHeader 0.5s;
+
+}
+#recents-headline {
+    color: var(--color-content-primary-dark);
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 3rem;
+    padding-top: 0rem;
+    animation: introduceHeader 0.5s;
+
+}
+
+.scrolly>.row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scrolly>.row>.col {
+    display: inline-block;
+    float: none;
+}
+.col-xs-4 {
+    font-size: 48px;
+    padding-bottom: 20px;
+    padding-top: 18px;
+    margin: 10px;
+    width: 150px;
+    height: 100px;
+}

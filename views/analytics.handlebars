@@ -1,4 +1,4 @@
-<div class="chart-container" style="position: relative; height:10vh; width:30vw">
+<div class="chart-container" style="position: relative; height:10vh; width:20vw">
     <canvas id="myChart" width="200" height="200"></canvas>
 </div>
 <script type="text/javascript" >    
@@ -28,9 +28,15 @@
             }]
         },
         options: {
+            legend: {
+                labels: {
+                    fontSize: 24
+                }
+            },
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontSize: 17,
                         beginAtZero: true
                     }
                 }]
