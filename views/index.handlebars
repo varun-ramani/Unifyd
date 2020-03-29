@@ -7,7 +7,8 @@
                 </h1>
 
                 <h2 class="col-md-12" id="header-description">
-                    Yhuhuuhuhuhuhurd
+                    Unifyd is an efficient and safe way to recieve the products you love. From <b>volunteers</b> to <b>businesses</b>, your
+                    products will be delivered with ease.
                 </h2>
             </div>
             <div class="col-md-1"></div>
@@ -15,6 +16,7 @@
                 <div class="authcard col-md-10">
                     <div id="signup-card">
                         <h1>Get Started</h1>
+
                         <div class="container">
                             <div id="seller-signup">
                                 <input class="form-control" type="text" id="seller-signup-name"
@@ -30,6 +32,7 @@
                                 <input class="form-control" type="password" id="buyer-signup-password"
                                     placeholder="Password">
                             </div>
+
                             <div class="row" id="usertype-select">
                                 <div class="col-md-3 offset-md-1 my-auto">
                                     <p>I am a: </p>
@@ -39,7 +42,11 @@
                                     <button onClick="selectUsertype('seller')" class="btn btn-secondary">Seller</button>
                                 </div>
                             </div>
-                            <button onClick="signup()" class="btn btn-info">Create your account</button>
+                            <button onClick="signup()" class="btn btn-info" id="create-account">Create your account</button>
+
+                            <div class="row" id="signup-back">
+                                <button class="col-md-4 offset-md-4 btn btn-primary" onClick="goBackSignup()">Back</button>
+                            </div>
                         </div>
                     </div>
 
