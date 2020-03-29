@@ -8,7 +8,8 @@ router.all('/', function (req, res) {
         css: ['/static/css/authcard/authcard.css', '/static/css/index.css'],
         js: ['/static/js/index.js'],
         nav: req.nav,
-        messages: req.flash('notif')
+        messages: req.flash('notif'),
+        user: { name: req.session.name, email: req.session.email, type: req.session.type }
     }
     return res.render('index', data)
 });
@@ -16,34 +17,37 @@ router.all('/', function (req, res) {
 router.use('/api/auth', require('./auth'));
 
 router.all("/products", function (req, res) {
-    req.flash('notif', req.session.email)
-
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
         js: ['/static/js/products.js'],
         nav: req.nav,
-        messages: req.flash('notif')
+        messages: req.flash('notif'),
+        user: { name: req.session.name, email: req.session.email, type: req.session.type }
     }
     return res.render('products', data)
 });
 
-router.all("/analytics", function(req,res){
-    data={
+router.all("/analytics", function (req, res) {
+    data = {
         title: 'Analytics',
         nav: req.nav,
-        messages: req.flash('notif')
+        css: [],
+        js:[],
+        messages: req.flash('notif'),
+        user: { name: req.session.name, email: req.session.email, type: req.session.type }
     }
     return res.render('analytics', data);
 })
 
-// router.all('/logout', function (req, res) {
-//     if (req.session) {
-//         req.session.destroy(err => {
-//             res.redirect('/')
-//         })
-//     }
-// })
+router.all('/logout', function (req, res) {
+    if (req.session) {
+        req.session.destroy(err => {
+        })
+    }
+    return res.redirect('/')
+
+})
 
 
 module.exports = router

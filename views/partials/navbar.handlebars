@@ -8,14 +8,44 @@
             <a class="nav-item nav-link px-4" href="/about">About</a>
             <a class="nav-item nav-link px-4" href="/operations">Operations</a>
             <a class="nav-item nav-link px-4" href="/#faq">FAQ</a>
-            <a class="nav-item nav-link px-4" href="/contact">Contact</a>
+
             {{#if nav.login }}
-            <a class="nav-item nav-link px-4" href="/">Login</a>
+            <a class="btn btn-outline-light px-4 ml-4" href="/" role="button">Login</a>
             {{/if}}
+
             {{#if nav.dashboard }}
             <a class="nav-item nav-link px-4" href="/dashboard">Dashboard</a>
             {{/if}}
+
+            {{#if nav.products }}
+            <a class="nav-item nav-link px-4" href="/products">Products</a>
+            {{/if}}
+
+            {{#if nav.prof }}
+            <div class="pull-right px-3">
+                <ul class="nav pull-right ">
+                    <li class="dropdown "><a href="#" class="dropdown-toggle nav-item nav-link"
+                            data-toggle="dropdown">Welcome, {{user.name}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="background-color: var(--color-background-primary-dark)">
+                            <li class="dropdown-item"><a href="/profile" class="droplink"><i class="icon-cog"></i>
+                                    Profile</a></li>
+                            {{#equals user.type "buyer"}}
+                            <li class="dropdown-item"><a href="/cart" class="droplink"><i class="icon-cog"></i>
+                                    Cart</a></li>
+                            {{/equals}}
+                            {{#equals user.type "seller"}}
+                            <li class="dropdown-item"><a href="/analytics" class="droplink"><i class="icon-cog"></i>
+                                    Analytics</a></li>
+                            {{/equals}}
+
+                            <li class="dropdown-item"><a href="/logout" class="droplink"><i class="icon-cog"></i>
+                                    Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+
         </div>
     </div>
 </nav>
-

@@ -17,6 +17,17 @@ header {
     animation: introduceHeader 0.5s;
 }
 
+#middle {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-background-secondary-dark);
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+    min-height: 90vh;
+    z-index: 4 !important;
+}
+
+
 #header-description {
     color: var(--color-content-secondary-dark);
     font-family: Poppins;
@@ -43,8 +54,9 @@ header {
 
 svg {
     position: absolute;
-    height: 100vh;
-    z-index: 0
+    height: 100%;
+    z-index: 0 !important;
+    min-height: 90vh;
 }
 
 line {

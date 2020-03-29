@@ -5,6 +5,11 @@ const config = require('../config')
 const dbUsers = require('../database/users')
 const utils = require('../utils')
 router.post('/signup', async (req, res) => {
+    if (req.session.email) {
+        return res.send({
+            "status": "Already logged in."
+        });
+    }
     var password = req.body['password'];
     var name = req.body['name'];
     var email = req.body['email'];
@@ -64,6 +69,11 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    if (req.session.email) {
+        return res.send({
+            "status": "Already logged in."
+        });
+    }
     var email = req.body['email'];
     var password = req.body['password'];
 

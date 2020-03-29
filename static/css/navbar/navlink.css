@@ -49,7 +49,21 @@
     background-size: 100% 2px;
 }
  */
+
+.dropdown-item:hover {
+    background-color: var(--color-background-secondary-dark) !important;
+}
+
 .nav-item {
     color: white !important;
     font-family: Poppins;
+}
+
+.droplink {
+    color: white !important;
+    font-family: Poppins;
+}
+
+.droplink:hover {
+    text-decoration: none !important;
 }
