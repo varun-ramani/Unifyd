@@ -1,0 +1,40 @@
+Products
+name - string
+categories - string []
+priceStart - decimal
+priceEnd - decimal
+sellerOid - mongo oid
+description - string
+images - string [] of urls
+available (stock) - integer
+limit - integer
+
+
+Buyers
+name - String
+email - String
+type - String
+password - String 
+
+
+Sellers (Vendor)
+name - String
+email - String
+type - String
+password - String 
+payment_info - TBD
+
+
+Transactions
+sellerOID
+buyerOID
+productOID
+quantity
+price
+total
+
+
+Locations
+latitude 
+longitude
+title
