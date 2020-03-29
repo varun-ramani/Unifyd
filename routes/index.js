@@ -56,7 +56,7 @@ router.all("/dashboard", function (req, res) {
         data = {
             title: 'Dashboard',
             css: ['/static/css/buyerdash.css'],
-            js: [''],
+            js: ['/static/js/dashboard.js'],
             nav: req.nav,
             messages: req.flash('notif'),
             user: req.session.user
