@@ -18,7 +18,8 @@ router.all('/api/auth', require('./auth'))
 router.all("/products", function(req,res){
     data ={
         title: 'Products',
-        css: ['/static/css/products.css']
+        css: ['/static/css/products.css'],
+        nav: req.nav,
     }
     res.render('products',data);
 })
