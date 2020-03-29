@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
         });
     }
     email = email.toLowerCase()
-    dbres = await dbUsers.getUser({ 'email': email })
+    dbres = await dbUsers.getUserByEmail({ 'email': email })
     if (dbres.status === 'error') {
         return res.send({
             "status": "DB existing user error."
@@ -88,7 +88,7 @@ router.post('/login', async (req, res) => {
             "status": "Not a valid email."
         });
     }
-    dbres = await dbUsers.getUser({ 'email': email })
+    dbres = await dbUsers.getUserByEmail({ 'email': email })
     if (dbres.status === 'error') {
         return res.send({
             "status": "DB error."
