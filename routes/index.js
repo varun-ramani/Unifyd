@@ -42,18 +42,26 @@ router.all("/products", function (req, res) {
 });
 
 router.all("/dashboard", function (req, res) {
-    data = {
-        title: 'Dashboard',
-        css: ['/static/css/dashboard.css'],
-        js: ['/static/js/products.js'],
-        nav: req.nav,
-        messages: req.flash('notif'),
-        user: req.session.user
-    }
     if (req.session.user.type === 'vendor') {
-        return res.render('vendordashboard', data);
+        data = {
+            title: 'Dashboard',
+            css: ['/static/css/vendordash.css'],
+            js: ['/static/js/vendordash.js'],
+            nav: req.nav,
+            messages: req.flash('notif'),
+            user: req.session.user
+        }
+        return res.render('vendordash', data);
     } else {
-        return res.render('buyerdashboard', data);
+        data = {
+            title: 'Dashboard',
+            css: ['/static/css/buyerdash.css'],
+            js: [''],
+            nav: req.nav,
+            messages: req.flash('notif'),
+            user: req.session.user
+        }
+        return res.render('buyerdash', data);
     }
 });
 
