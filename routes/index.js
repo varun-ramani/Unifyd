@@ -17,6 +17,13 @@ router.all('/', function (req, res) {
 
 router.all('/api/auth', require('./auth'))
 
+router.all("/products", function(req,res){
+    data ={
+        title: 'Products',
+        css: ['/static/css/products.css']
+    }
+    res.render('products',data);
+})
 // router.all('/logout', function (req, res) {
 //     if (req.session) {
 //         req.session.destroy(err => {
