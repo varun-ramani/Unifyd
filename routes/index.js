@@ -3,7 +3,6 @@ var router = express.Router();
 var config = require('../config')
 
 router.all('/', function (req, res) {
-    req.flash('notif', 'Welcome to Unifyd')
     data = {
         title: 'Home',
         css: ['/static/css/authcard/authcard.css', '/static/css/index.css'],
@@ -11,12 +10,14 @@ router.all('/', function (req, res) {
         nav: req.nav,
         messages: req.flash('notif')
     }
-    return res.render('index', data);
+    return res.render('index', data)
 });
 
-router.use('/auth', require('./auth'));
+router.use('/api/auth', require('./auth'));
 
 router.all("/products", function (req, res) {
+    req.flash('notif', req.session.email)
+
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
@@ -24,7 +25,7 @@ router.all("/products", function (req, res) {
         nav: req.nav,
         messages: req.flash('notif')
     }
-    res.render('products', data);
+    return res.render('products', data)
 });
 
 // router.all('/logout', function (req, res) {

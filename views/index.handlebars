@@ -7,7 +7,8 @@
                 </h1>
 
                 <h2 class="col-md-12" id="header-description">
-                    Unifyd is an efficient and safe way to recieve the products you love. From <b>volunteers</b> to <b>businesses</b>, your
+                    Unifyd is an efficient and safe way to recieve the products you love. From <b>volunteers</b> to
+                    <b>businesses</b>, your
                     products will be delivered with ease.
                 </h2>
             </div>
@@ -43,22 +44,34 @@
                                     <button onClick="selectUsertype('seller')" class="btn btn-secondary">Seller</button>
                                 </div>
                             </div>
-                            <button onClick="signup()" class="btn btn-info" id="create-account">Create your account</button>
+                            <button onClick="signup()" class="btn btn-info" id="create-account">Create your
+                                account</button>
 
-                            <div class="row" id="signup-back">
-                                <button class="col-md-4 offset-md-4 btn btn-primary" onClick="goBackSignup()">Back</button>
+                        </div>
+                        <div class="container">
+                            <div class="row" id="signupOpts">
+                                <div class=" col col-12 ">
+                                    <button class="btn btn-outline-info" onClick="displayLogin()">Login</button>
+                                    <button class="btn btn-outline-secondary" onClick="goBack()">Back</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div id="login-card">
-                        <form action="/login">
-                            <h1>Welcome Back</h1>
-                            <div class="container">
-                                <input class="form-control" type="text" id="login-email" placeholder="Email Address">
-                                <input class="form-control" type="password" id="login-password" placeholder="Password">
-                                <button onClick="login()" class="btn btn-success">Let's do this!</button>
+                        <h1>Welcome Back</h1>
+                        <div class="container">
+                            <input class="form-control" type="text" id="login-email" placeholder="Email Address">
+                            <input class="form-control" type="password" id="login-password" placeholder="Password">
+                            <button onClick="login()" class="btn btn-success">Let's do this!</button>
+                            <div class="row " id="loginOpts">
+                                <div class=" col col-12 ">
+                                    <button class="btn btn-outline-info" onClick="displayRegister()">Register</button>
+                                    <button class="btn btn-outline-secondary" onClick="goBack()">Back</button>
+                                </div>
                             </div>
+                        </div>
+
                     </div>
 
                     <div class="container" id="auth-status"></div>

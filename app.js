@@ -64,7 +64,7 @@ app.use(function (req, res) {
 
 app.use(function (error, req, res, next) {
     res.status(500)
-    res.send(error)
+    return res.send(error)
 });
 
 dbSetup.connectToServer(function (err, client) {

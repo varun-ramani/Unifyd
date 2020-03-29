@@ -18,13 +18,15 @@ var buyerSignup = document.getElementById('buyer-signup');
 var sellerSignup = document.getElementById('seller-signup');
 
 var createAccount = document.getElementById("create-account");
-var signupBack = document.getElementById("signup-back");
-
+var signupOpts = document.getElementById("signupOpts");
+var loginOpts = document.getElementById("loginOpts");
+signupOpts.style.display = "none";
+loginOpts.style.display = "none";
 var userType = "";
 
 function selectUsertype(_userType) {
     userType = _userType;
-    switch(_userType) {
+    switch (_userType) {
         case 'buyer':
             buyerSignup.style.display = "block";
             break;
@@ -34,12 +36,14 @@ function selectUsertype(_userType) {
     }
     userTypeSelect.style.display = "none";
     createAccount.style.display = "block";
-    signupBack.style.display = "block";
+    signupOpts.style.display = "block";
+    loginOpts.style.display = "none";
+
 }
 
 function signup() {
     var body = "";
-    
+
     switch (userType) {
         case 'buyer':
             body = JSON.stringify({
@@ -64,19 +68,22 @@ function signup() {
         },
         "body": body
     })
-    .then(response => response.json())
-    .then(responseJson => {
-        if (responseJson['status'] === "register/success") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "Thanks for registering! Go ahead and sign in.";
-        } else if (responseJson['status'] === "incomplete_fields") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
-        } else if (responseJson['status'] === "register/user_exists") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "It looks like you already have an account! Did you forget your password?";
-        }
-    });
+        .then(response => response.json())
+        .then(responseJson => {
+            if (responseJson['status'] === "register/success") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Thanks for registering! Go ahead and sign in.";
+            } else if (responseJson['status'] === "incomplete_fields") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
+            } else if (responseJson['status'] === "register/user_exists") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "It looks like you already have an account! Did you forget your password?";
+            } else {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Database error.";
+            }
+        });
 
 }
 
@@ -94,37 +101,51 @@ function login() {
             "password": password
         })
     })
-    .then(response => response.json())
-    .then(responseJson => {
-        if (responseJson['status'] === "login/success") {
-            document.cookie = `authtoken=${responseJson['authtoken']}; path=/`
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "Let's go!";
-            location.href = "/home";
-        } else if (responseJson['status'] === "incomplete_fields") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
-        } else if (responseJson['status'] === "login/incorrect_email") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "You don't seem to have an account registered to that email.";
-        } else if (responseJson['status'] === "login/incorrect_password") {
-            authStatus.style.display = "block";
-            authStatus.innerHTML = "That's the wrong password. Keep trying!";
-        }
-    });
+        .then(response => response.json())
+        .then(responseJson => {
+            if (responseJson['status'] === "login/success") {
+                document.cookie = `authtoken=${responseJson['authtoken']}; path=/`
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Let's go!";
+                location.href = "/home";
+            } else if (responseJson['status'] === "incomplete_fields") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Sorry, one or more fields appear to be blank.";
+            } else if (responseJson['status'] === "login/incorrect_email") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "You don't seem to have an account registered to that email.";
+            } else if (responseJson['status'] === "login/incorrect_password") {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "That's the wrong password. Keep trying!";
+            } else {
+                authStatus.style.display = "block";
+                authStatus.innerHTML = "Database error.";
+            }
+        });
 }
 
 function displayLogin() {
     signupCard.style.display = "none";
     loginCard.style.display = "block";
+    signupOpts.style.display = "none";
+    loginOpts.style.display = "block";
+
+}
+function displayRegister() {
+    signupCard.style.display = "block";
+    loginCard.style.display = "none";
+    signupOpts.style.display = "block";
+    loginOpts.style.display = "none";
 }
 
-function goBackSignup() {
+function goBack() {
+    signupCard.style.display = "block";
     buyerSignup.style.display = "none";
     sellerSignup.style.display = "none";
-    userTypeSelect.style.display = null;
+    userTypeSelect.style.display = "block";
     createAccount.style.display = "none";
-    signupBack.style.display = "none";
+    signupOpts.style.display = "none";
+    loginOpts.style.display = "none";
+    loginCard.style.display = "none"
     userType = "";
-
 }
