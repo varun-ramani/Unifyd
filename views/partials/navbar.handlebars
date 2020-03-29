@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light" id="page-navbar">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <a class="navbar-brand" href="#">Unifyd</a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link px-4" href="/about">About</a>
+            <a class="nav-item nav-link px-4" href="/operations">Operations</a>
+            <a class="nav-item nav-link px-4" href="/#faq">FAQ</a>
+            <a class="nav-item nav-link px-4" href="/contact">Contact</a>
+            {{#if nav.login }}
+            <a class="nav-item nav-link px-4" href="/">Login</a>
+            {{/if}}
+            {{#if nav.dashboard }}
+            <a class="nav-item nav-link px-4" href="/dashboard">Dashboard</a>
+            {{/if}}
+        </div>
+    </div>
+</nav>
+
