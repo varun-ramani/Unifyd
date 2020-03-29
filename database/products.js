@@ -86,8 +86,9 @@ db.searchProduct = function (data) {
         },
         { $match: { $or: [{ "name": { $regex: query } }, { "description": { $regex: query } }, { "concatcategories": { $regex: query } }] } },
         ]).limit(50).toArray().then((res) => {
-            resolve({ 'status': 'success' })
+            resolve({ 'status': 'success', res: res})
         }).catch((err) => {
+            console.log(err)
             resolve({ 'status': 'fail' })
         })
 

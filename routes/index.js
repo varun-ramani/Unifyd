@@ -18,7 +18,6 @@ router.use('/api/auth', require('./auth'));
 
 //secure
 router.use((req, res, next) => {
-    console.log("aab " + req.session.user)
     if (req.session.user) {
         return next()
     } else {

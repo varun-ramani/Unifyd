@@ -2,20 +2,13 @@
     <br>
     <h1 id="products-headline">Vendor Dashboard</h1>
     <br>
-<<<<<<< HEAD
-
-    <div class="row" id="search">
-        {{#equals user.type "buyer"}}
-        <input class="form-control col-12" type="text" id="search-field" placeholder="What do you need?"
-            oninput="search()">
-        {{/equals}}
-        {{#equals user.type "vendor"}}
-        <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
-            oninput="search()">
-        {{/equals}}
+    <div class="row">
+        <a class="btn col col-4 btn-success" href="#" role="button">Add Product</a>
+        <div class="col col-8" id="search">
+            <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
+                oninput="search()">
+        </div>
     </div>
-=======
->>>>>>> ff12ee0ee70ea5d6787d62a54b6bce07a5ad8072
     <br>
     <div id="search-results" class="row">
     </div>
@@ -218,15 +211,18 @@
                             </div>
                             <div class="col-lg-7">
                                 <h2 class="h2-responsive product-name">
-                                    <strong>productName</strong>
+                                    <strong><input class="form-control form-control-lg" type="text" value="productName">
+                                    </strong>
                                 </h2>
                                 categories
                                 <h4 class="h4-responsive">
                                     <span class="green-text">
-                                        <strong>priceStart - priceEnd</strong>
+                                        <strong><input class="form-control" type="text" value="priceStart">
+                                            - <input class="form-control" type="text" value="priceEnd">
+                                        </strong>
                                     </span>
                                 </h4>
-                                <p>description</p>
+                                <p><input class="form-control" type="text" value="description"></p>
 
                                 <div class="card-body align-text-bottom">
                                     <div class="row col-md-12">
