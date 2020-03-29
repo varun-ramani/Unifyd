@@ -4,6 +4,7 @@ header {
     padding-bottom: 10rem;
     padding-top: 10rem;
     min-height: 90vh;
+    z-index: -1;
 }
 
 #header-tagline {
