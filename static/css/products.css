@@ -80,3 +80,43 @@ body {
 .text {
     font-size: 15px;
 }
+
+.product-card {
+    /* background-color: var(--color-background-secondary-light); */
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    margin-right: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.product-card:hover {
+    opacity: 1;
+}
+
+.product-card h1 {
+    /* color: var(--color-content-primary-light); */
+    font-family: Poppins;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+.product-card p {
+    /* color: var(--color-content-primary-light); */
+    font-family: Poppins;
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+#popular-headline {
+    font-size: 2rem;
+    color: white;
+    padding: none;
+    margin: none;
+    display: block;
+}

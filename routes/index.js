@@ -14,6 +14,7 @@ router.all('/', function (req, res) {
 });
 
 router.use('/api/auth', require('./auth'));
+router.use('/api/products', require('./products'))
 
 router.all("/products", function (req, res) {
     req.flash('notif', req.session.email)
@@ -21,12 +22,14 @@ router.all("/products", function (req, res) {
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
-        js: ['/static/js/products.js'],
+        js: ['/static/js/handlebars.js', '/static/js/products.js'],
         nav: req.nav,
         messages: req.flash('notif')
     }
     return res.render('products', data)
 });
+
+
 
 router.all("/analytics", function(req,res){
     data={
