@@ -55,32 +55,27 @@
 
 #login-card {
     display: none;
-    animation: displayLogin 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-#buyer-signup, #seller-signup {
+#usertype-select {
+    animation: fadeIn 0.5s;
+}
+
+#buyer-signup, #seller-signup, #signup-back, #create-account {
     display: none;
-    animation: displayLogin 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-@keyframes displayLogin {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 #auth-status {
     font-family: Poppins;
     padding-top: 1rem;
     display: none;
-    animation: displayAuthStatus 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-@keyframes displayAuthStatus {
+@keyframes fadeIn {
     from {
         opacity: 0;
     }

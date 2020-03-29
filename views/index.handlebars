@@ -15,6 +15,7 @@
                 <div class="authcard col-md-10">
                     <div id="signup-card">
                         <h1>Get Started</h1>
+
                         <div class="container">
                             <div id="seller-signup">
                                 <input class="form-control" type="text" id="seller-signup-name" placeholder="Business Name">
@@ -25,6 +26,7 @@
                                 <input class="form-control" type="text" id="buyer-signup-email" placeholder="Email Address">
                                 <input class="form-control" type="password" id="buyer-signup-password" placeholder="Password">
                             </div>
+
                             <div class="row" id="usertype-select">
                                 <div class="col-md-3 offset-md-1 my-auto">
                                     <p>I am a: </p>
@@ -34,7 +36,11 @@
                                     <button onClick="selectUsertype('seller')" class="btn btn-secondary">Seller</button>
                                 </div>
                             </div>
-                            <button onClick="signup()" class="btn btn-info">Create your account</button>
+                            <button onClick="signup()" class="btn btn-info" id="create-account">Create your account</button>
+
+                            <div class="row" id="signup-back">
+                                <button class="col-md-4 offset-md-4 btn btn-primary" onClick="goBackSignup()">Back</button>
+                            </div>
                         </div>
                     </div>
 

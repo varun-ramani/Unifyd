@@ -17,6 +17,9 @@ var userTypeSelect = document.getElementById("usertype-select");
 var buyerSignup = document.getElementById('buyer-signup');
 var sellerSignup = document.getElementById('seller-signup');
 
+var createAccount = document.getElementById("create-account");
+var signupBack = document.getElementById("signup-back");
+
 var userType = "";
 
 function selectUsertype(_userType) {
@@ -30,6 +33,8 @@ function selectUsertype(_userType) {
             break;
     }
     userTypeSelect.style.display = "none";
+    createAccount.style.display = "block";
+    signupBack.style.display = "block";
 }
 
 function signup() {
@@ -112,4 +117,14 @@ function login() {
 function displayLogin() {
     signupCard.style.display = "none";
     loginCard.style.display = "block";
+}
+
+function goBackSignup() {
+    buyerSignup.style.display = "none";
+    sellerSignup.style.display = "none";
+    userTypeSelect.style.display = null;
+    createAccount.style.display = "none";
+    signupBack.style.display = "none";
+    userType = "";
+
 }
