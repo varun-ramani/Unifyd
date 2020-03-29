@@ -7,12 +7,12 @@
         {{#equals user.type "buyer"}}
         <label for="search-field" style="color:white">Search for products</label>
         <input class="form-control" type="text" id="search-field"
-            oninput="search()" placeholder="What do you need?">
+            onchange="search()" placeholder="What do you need?">
         {{/equals}}
         {{#equals user.type "vendor"}}
         <label for="search-field" style="color:white">Search for products</label>
         <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
-            oninput="search()">
+            onchange="search()">
         {{/equals}}
     </div>
 
@@ -24,13 +24,13 @@
     <div id="products-content" class="">
         <div class="row" id="product-categories">
 
-            <button class="btn btn-outline-light text-center col">Cleaning</button>
+            <button class="btn btn-outline-light text-center col" onclick="categoryclick('cleaning')">Cleaning</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-warning text-center col">Food</button>
+            <button class="btn btn-outline-warning text-center col" onclick="categoryclick('food')">Food</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-danger text-center col">Medical</button>
+            <button class="btn btn-outline-danger text-center col" onclick="categoryclick('medical')">Medical</button>
             <div class="col-1"></div>
-            <button class="btn btn-outline-success text-center col">Bathroom</button>
+            <button class="btn btn-outline-success text-center col" onclick="categoryclick('clothing')">Clothing</button>
 
         </div>
 
