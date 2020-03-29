@@ -50,7 +50,7 @@ router.all("/dashboard", function (req, res) {
         messages: req.flash('notif'),
         user: req.session.user
     }
-    return res.render('buyerdashboard', data);
+    return res.render('buyerdash', data);
 });
 
 router.all("/analytics", function (req, res) {
