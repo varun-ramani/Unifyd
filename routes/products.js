@@ -3,15 +3,15 @@ const router = express.Router();
 const dbProducts = require('../database/products')
 
 router.get('/search', async function (req, res) {
-    var query = req.query;
+    var query = req.query.query;
     if (!query) {
         return res.send({
             "products": []
         })
     }
-    dbres = await dbProducts.searchProduct(query)
+    dbres = await dbProducts.searchProduct({search: query})
     console.log(dbres.status)
-    console.log(dbres.res)
+    // console.log(dbres.res)
     return res.send({
         "products": dbres.res
     });

@@ -7,12 +7,12 @@
         {{#equals user.type "buyer"}}
         <label for="search-field" style="color:white">Search for products</label>
         <input class="form-control" type="text" id="search-field"
-            oninput="search()" placeholder="What do you need?">
+            onchange="search()" placeholder="What do you need?">
         {{/equals}}
         {{#equals user.type "vendor"}}
         <label for="search-field" style="color:white">Search for products</label>
         <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
-            oninput="search()">
+            onchange="search()">
         {{/equals}}
     </div>
 
