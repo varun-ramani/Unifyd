@@ -138,10 +138,11 @@ body {
 }
 
 #search-field {
-    background-color: rgba(255,255,255,0.3); color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
 }
 
-#product-template{
+#product-template {
     display: none;
 }
 
@@ -150,7 +151,6 @@ body {
 }
 
 .img-hover-zoom {
-
     /* [1.1] Set it as per your need */
     overflow: hidden;
     /* [1.2] Hide the overflowing of child elements */
@@ -170,4 +170,12 @@ body {
 
 .productcard {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-item:hover img {
+    transform: scale(1.2);
+}
+
+.img-hover-zoom img  {
+    transition: transform .5s ease;
 }
