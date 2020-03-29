@@ -18,7 +18,6 @@ function search() {
             .then(response => response.json())
             .then(responseJson => {
                 var productList = responseJson['products'];
-                console.log(productTemplate)
                 var newHTML = "";
 
                 for (var index in productList) {
