@@ -17,11 +17,64 @@ body {
     animation: introduceHeader 0.5s;
 
 }
+
 .box-part {
     background-color: var(--color-placeholder-light) !important;
     border-radius: 20px;
     padding: 100px 60px;
     margin: 30px 15px;
+}
+
+.product-category {
+    padding: 3rem;
+    height: fit-content;
+    width: fit-content;
+}
+
+#product-categories .btn {
+    font-family: Poppins !important;
+    font-size: 1.5rem;
+}
+
+#search h1 {
+    color: white;
+    font-family: Poppins;
+}
+
+#search-field {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+    border-width: 0.1rem;
+    transition: border-color 0.2s, border-width 0.2s;
+}
+
+#search-results {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+#search-field:focus {
+    border-color: var(--color-accent-primary);
+    border-width: 0.25rem !important;
+    outline: none !important;
+    box-shadow: none
+}
+
+#products-content {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(10%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 
 .text {
