@@ -31,7 +31,7 @@ function selectUsertype(_userType) {
         case 'buyer':
             buyerSignup.style.display = "block";
             break;
-        case 'seller':
+        case 'vendor':
             sellerSignup.style.display = "block";
             break;
     }
@@ -54,12 +54,12 @@ function signup() {
                 "userType": 'buyer'
             });
             break;
-        case 'seller':
+        case 'vendor':
             body = JSON.stringify({
                 "email": sellerSignupEmail.value,
                 "password": sellerSignupPassword.value,
                 "name": sellerSignupName.value,
-                "userType": 'seller'
+                "userType": 'vendor'
             });
             break;
     }

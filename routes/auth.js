@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
     var name = req.body['name'];
     var email = req.body['email'];
     var userType = req.body['userType'];
-    if (userType === 'seller') {
+    if (userType === 'vendor') {
         if (email === "" || password === "" || name === "") {
             return res.send({
                 "status": "Some fields are incomplete."
@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
         }
     } else {
         return res.send({
-            "status": "Neither buyer nor seller error."
+            "status": "Neither buyer nor vendor error."
         });
     }
     if (!utils.ValidateEmail(email)) {
