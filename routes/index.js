@@ -16,6 +16,15 @@ router.all('/', function (req, res) {
 
 router.use('/api/auth', require('./auth'));
 
+//secure
+router.use((req, res, next) => {
+
+    if (req.session.email) {
+        next()
+    } else {
+        return res.redirect('/')
+    }
+});
 router.all("/products", function (req, res) {
     data = {
         title: 'Products',
@@ -28,7 +37,7 @@ router.all("/products", function (req, res) {
     return res.render('products', data)
 });
 
-router.all("/dashboard/", function(req,res){
+router.all("/dashboard", function (req, res) {
     data = {
         title: 'Dashboard',
         css: ['/static/css/dashboard.css'],
@@ -36,15 +45,15 @@ router.all("/dashboard/", function(req,res){
         nav: req.nav,
         messages: req.flash('notif')
     }
-    return res.render('buyerdashboard',data);
+    return res.render('buyerdashboard', data);
 });
 
-router.all("/analytics", function(req,res){
-    data={
+router.all("/analytics", function (req, res) {
+    data = {
         title: 'Analytics',
         nav: req.nav,
         css: [],
-        js:[],
+        js: [],
         messages: req.flash('notif'),
         user: { name: req.session.name, email: req.session.email, type: req.session.type }
     }
@@ -57,7 +66,6 @@ router.all('/logout', function (req, res) {
         })
     }
     return res.redirect('/')
-
 })
 
 
