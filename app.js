@@ -17,54 +17,46 @@ app.engine('handlebars', hbs({
 }));
 
 app.set('view engine', 'handlebars');
-app.use(helmet())
-app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}))
+// app.use(helmet())
 app.use(bodyParser.json());
 
-app.use(cookieParser('betajithisisvarun'));
+// app.use(cookieParser('betajithisisvarun'));
 
 app.use('/static', express.static('static'));
 
-var store = new MongoDBStore(
-    {
-        uri: config.database.uri,
-        databaseName: config.database.db,
-        collection: 'sessions'
-    },
-    function (error) {
-        // console.log(error)
-    });
-store.on('error', function (error) {
-    // console.log(error)
-});
+// var store = new MongoDBStore(
+//     {
+//         uri: config.database.uri,
+//         databaseName: config.database.db,
+//         collection: 'sessions'
+//     },
+//     function (error) {
+//         // console.log(error)
+//     });
+// store.on('error', function (error) {
+//     // console.log(error)
+// });
 
-app.use(session({
-    secret: config.session.secret,
-    cookie: {
-        maxAge: config.session.cookie.maxAge,
-        sameSite: config.session.cookie.sameSite
-    },
-    store: store,
-    resave: config.session.resave,
-    rolling: config.session.rolling,
-    saveUninitialized: config.session.saveUninitialized
-}));
-app.use(cookieParser())
-app.use(flash())
-app.use((req, res, next) => {
-    //Use this middleware section for handling user auth and session stuff
+// app.use(session({
+//     secret: config.session.secret,
+//     cookie: {
+//         maxAge: config.session.cookie.maxAge,
+//         sameSite: config.session.cookie.sameSite
+//     },
+//     store: store,
+//     resave: config.session.resave,
+//     rolling: config.session.rolling,
+//     saveUninitialized: config.session.saveUninitialized
+// }));
+// app.use(flash());
+// app.use((req, res, next) => {
+//     //Use this middleware section for handling user auth and session stuff
 
-    next()
-});
+//     next()
+// });
 
-
-var indexRoutes = require('./routes/index');
-var apiRoutes = require('./routes/authentication');
-app.use('/', indexRoutes);
-app.use('/api/auth', apiRoutes);
+app.use('/', require('./routes/index'));
+app.use('/api/auth', require('./routes/authentication'));
 
 
 app.use(function (req, res) {

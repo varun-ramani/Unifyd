@@ -3,7 +3,6 @@ var router = express.Router();
 var config = require('../config')
 
 router.all('/', function (req, res) {
-    console.log("yee");
     res.render('index');
 });
 
