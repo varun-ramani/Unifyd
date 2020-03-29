@@ -68,7 +68,7 @@ router.all("/cart", function(req,res){
     data = {
         title: 'Cart',
         css: ['/static/css/cart.css'],
-        js: ['/static/js/cart.js'],
+        js: ['static/js/handlebars.js','/static/js/cart.js'],
         nav: req.nav,
         messages: req.flash('notif'),
         user: req.session.user
