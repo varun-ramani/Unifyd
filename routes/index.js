@@ -15,6 +15,7 @@ router.all('/', function (req, res) {
 });
 
 router.use('/api/auth', require('./auth'));
+router.use('/api/products', require('./products'))
 
 //secure
 router.use((req, res, next) => {
@@ -28,7 +29,7 @@ router.all("/products", function (req, res) {
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],
-        js: ['/static/js/products.js'],
+        js: ['/static/js/handlebars.js', '/static/js/products.js'],
         nav: req.nav,
         messages: req.flash('notif'),
         user: { name: req.session.name, email: req.session.email, type: req.session.type }

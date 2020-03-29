@@ -4,16 +4,12 @@
     <br>
 
     <div class="row" id="search">
-        {{!-- <div class="col-2">
-            <h1>Search</h1>
-        </div> --}}
         <input class="form-control col-12" type="text" id="search-field" placeholder="Search For An Item" oninput="search()">
     </div>
 
     <br>
 
-    <div id="search-results">
-        <h1>Searching</h1>
+    <div id="search-results" class="row">
     </div>
 
     <div id="products-content">
@@ -62,5 +58,20 @@
                 </div>
             </div> --}}
         </div>
+
+        <br>
+        <br>
+        <br>
+
+        <span id="popular-headline">Popular Now</span>
+        <br>
+        <div class="row" id="popular-now"></div>
+    </div>
+</div>
+
+<div id="products-template" style="display: none">
+    <div class="product-card col-lg-3 bg-bootstrapColor">
+        <h1 style="color: textColor">productName</h1>
+        <p style="color: textColor">priceRange</p>
     </div>
 </div>
