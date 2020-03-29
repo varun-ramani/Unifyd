@@ -15,88 +15,42 @@ function search() {
         searchResults.style.display = "flex";
 
         fetch("/api/products/search?query=" + encodeURIComponent(value))
-        .then(response => response.json())
-        .then(responseJson => {
-            var productList = responseJson['products'];
+            .then(response => response.json())
+            .then(responseJson => {
+                var productList = responseJson['products'];
+                console.log(productTemplate)
+                var newHTML = "";
 
-            var newHTML = "";
-
-            for (var index in productList) {
-
-                var bootstrapColor = "";
-                var textColor = "";
-
-                switch (productList[index]['category']) {
-                    case "Cleaning":
-                        bootstrapColor = "light";
-                        textColor = "black";
-                        break;
-                    case "Food":
-                        bootstrapColor = "warning";
-                        textColor = "black";
-                        break;
-                    case "Medical":
-                        bootstrapColor = "danger";
-                        textColor = "white";
-                        break;
-                    case "Bathroom":
-                        bootstrapColor = "success";
-                        textColor = "white";
-                        break;
+                for (var index in productList) {
+                    newHTML += productTemplate
+                        .replace(/imgsrc/g, productList[index]['imageSource'][0])
+                        .replace(/productName/g, productList[index]['name'])
+                        .replace(/priceRange/g, productList[index]['priceRange'])
+                        .replace(/style="display: none"/g, "")
+                        
                 }
-                
-                newHTML += productTemplate
-                           .replace("imgsrc", "wigga")
-                           .replace("productName", productList[index]['name'])
-                           .replace("priceRange", productList[index]['priceRange'])
-                           .replace("bootstrapColor", bootstrapColor)
-                           .replace("textColor", textColor);
-            }
 
-            searchResults.innerHTML = newHTML;
+                searchResults.innerHTML = newHTML;
 
-        });
+            });
 
     }
 }
 
 fetch("/api/products/popular")
-.then(response => response.json())
-.then(responseJson => {
-    var productList = responseJson['products'];
+    .then(response => response.json())
+    .then(responseJson => {
+        var productList = responseJson['products'];
 
-    var newHTML = "";
+        var newHTML = "";
 
-    for (var index in productList) {
-
-        var bootstrapColor = "";
-        var textColor = "";
-
-        switch (productList[index]['category']) {
-            case "Cleaning":
-                bootstrapColor = "light";
-                textColor = "black";
-                break;
-            case "Food":
-                bootstrapColor = "warning";
-                textColor = "black";
-                break;
-            case "Medical":
-                bootstrapColor = "danger";
-                textColor = "white";
-                break;
-            case "Bathroom":
-                bootstrapColor = "success";
-                textColor = "white";
-                break;
+        for (var index in productList) {
+            newHTML += productTemplate
+                .replace(/imgsrc/g, productList[index]['imageSource'][0])
+                .replace(/productName/g, productList[index]['name'])
+                .replace(/priceRange/g, productList[index]['priceRange'])
+                .replace(/style="display: none"/g, "")
         }
-        
-        newHTML += productTemplate
-                    .replace("productName", productList[index]['name'])
-                    .replace("priceRange", productList[index]['priceRange'])
-                    .replace("bootstrapColor", bootstrapColor)
-                    .replace("textColor", textColor);
-    }
 
-    popularNow.innerHTML = newHTML;
-});
+        popularNow.innerHTML = newHTML;
+    });

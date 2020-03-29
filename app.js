@@ -64,30 +64,35 @@ app.use(async (req, res, next) => {
     req.nav = {}
     console.log(req.session)
 
-    if (req.session.user && req.session.user.email) {
-        dbres = await dbUsers.getUser({ 'email': req.session.user.email })
-        if (dbres.res) {
-            req.session.user = {
-                email: dbres.res.email,
-                name: dbres.res.name,
-                type: dbres.res.type
+    if (req.session.user) {
+        if (req.session.user.email) {
+            dbres = await dbUsers.getUserByEmail({ 'email': req.session.user.email })
+            if (dbres.res) {
+                req.session.user = {
+                    email: dbres.res.email,
+                    name: dbres.res.name,
+                    type: dbres.res.type
+                }
+                if (req.session.user.type == 'buyer') {
+                    req.nav.login = false
+                    req.nav.dashboard = true
+                    req.nav.prof = true
+                    req.nav.products = true
+                    return next()
+                } else if (req.session.user.type == 'vendor') {
+                    req.nav.login = false
+                    req.nav.dashboard = true
+                    req.nav.prof = true
+                    req.nav.products = true
+                    return next()
+                }
+            } else {
+                req.session.user = null
             }
-            if (req.session.user.type == 'buyer') {
-                req.nav.login = false
-                req.nav.dashboard = true
-                req.nav.prof = true
-                req.nav.products = true
-                return next()
-            } else if (req.session.user.type == 'vendor') {
-                req.nav.login = false
-                req.nav.dashboard = true
-                req.nav.prof = true
-                req.nav.products = true
-                return next()
-            }
+        }else{
+            req.session.user = null
         }
     }
-    req.session.user = null
     req.nav.login = true
     req.nav.dashboard = false
     req.nav.prof = false

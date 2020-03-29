@@ -29,6 +29,7 @@ router.use((req, res, next) => {
 router.use('/api/products', require('./products'))
 
 router.all("/products", function (req, res) {
+    var searchPlaceholder = "";
     data = {
         title: 'Products',
         css: ['/static/css/products.css'],

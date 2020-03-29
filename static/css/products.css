@@ -1,13 +1,16 @@
 body {
-    background-color: var(--color-background-primary-dark) !important;
+    background-color: var(--color-background-tertiary-dark) !important;
 }
+
 .box {
     padding: 60px 0px;
 }
+
 .svg-icons {
     margin-bottom: 20px;
 }
-#products-headline{
+
+#products-headline {
     color: var(--color-content-primary-dark);
     font-family: Poppins;
     font-weight: bold;
@@ -15,7 +18,11 @@ body {
     text-align: center;
     padding-top: 0rem;
     animation: introduceHeader 0.5s;
+}
 
+::placeholder {
+    color: black;
+    opacity: 1;
 }
 
 .box-part {
@@ -70,7 +77,6 @@ body {
         opacity: 0;
         transform: translateX(10%);
     }
-
     to {
         opacity: 1;
         transform: translateX(0%);
@@ -82,16 +88,13 @@ body {
 }
 
 .card {
-    transform: scale(0.8);
-    border-radius: 1rem;
-    height: 20rem;
+    border-radius: 5px;
 }
 
 .card-img-top {
-    border-radius: 1rem;
-    width: 100% !important;
+    width: 100%;
+    height: 15vw;
     object-fit: cover;
-    margin-top: 1rem;
 }
 
 .product-card {
@@ -132,4 +135,39 @@ body {
     padding: none;
     margin: none;
     display: block;
+}
+
+#search-field {
+    background-color: rgba(255,255,255,0.3); color: white;
+}
+
+#product-template{
+    display: none;
+}
+
+.productcard:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.img-hover-zoom {
+
+    /* [1.1] Set it as per your need */
+    overflow: hidden;
+    /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+
+.productcard:hover img {
+    transform: scale(1.2);
+}
+
+.productcard {
+    background-color: rgba(255, 255, 255, 0.2);
 }
