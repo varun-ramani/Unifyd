@@ -48,7 +48,7 @@ svg {
 }
 
 line {
-    stroke: rgba(255, 255, 255, 0.07);
+    stroke: rgba(255, 255, 255, 0.02);
     stroke-width: 10;
     stroke-linecap: round;
     stroke-dasharray: 66, 16;
@@ -63,9 +63,6 @@ line:nth-child(even) {
     animation: lineMove 2s infinite linear reverse;
 }
 
-#logo line {
-    stroke: rgba(255, 255, 255, 0.07);
-}
 
 @keyframes lineMove {
     to {
