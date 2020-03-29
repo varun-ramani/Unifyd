@@ -20,7 +20,18 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+    var email = req.body['email'];
+    var password = req.body['password'];
 
+    if (email === "" || password === "") {
+        res.send({
+            "status": "incomplete_fields"
+        });
+    }
+
+    res.send({
+        "status": "login/success"
+    });
 });
 
 module.exports = router;

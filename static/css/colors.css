@@ -1,11 +1,4 @@
 :root {
-    --color-green: #0fff00;
-    --color-blue: #0e01ff;
-    --color-aqua: #00e7fb;
-    --color-purple: #f900ec;
-    --color-red: #ff003a;
-    --color-yellow: #fce500;
-    --color-orange: #ff9b00;
     /* --color-bluegrey: #000E19; */
     --color-bluegrey: rgb(15, 15, 30);
     --color-bluegrey2: rgb(25, 25, 50);
