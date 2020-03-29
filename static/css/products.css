@@ -133,3 +133,7 @@ body {
     margin: none;
     display: block;
 }
+
+#products-template {
+    display: none;
+}
