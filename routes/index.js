@@ -3,10 +3,16 @@ var router = express.Router();
 var config = require('../config')
 
 router.all('/', function (req, res) {
-    res.render('index');
+    data = {
+        title: 'Home',
+        css: ['/static/css/authcard/authcard.css', '/static/css/index.css'],
+        js: ['/static/js/index.js'],
+
+    }
+    res.render('index', data);
 });
 
-// router.all('/login', require('./login'))
+router.all('/api/auth', require('./auth'))
 
 // router.all('/logout', function (req, res) {
 //     if (req.session) {

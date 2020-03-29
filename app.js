@@ -17,7 +17,7 @@ app.engine('handlebars', hbs({
 }));
 
 app.set('view engine', 'handlebars');
-// app.use(helmet())
+app.use(helmet())
 app.use(bodyParser.json());
 
 app.use(cookieParser('betajithisisvarun'));
@@ -31,10 +31,10 @@ var store = new MongoDBStore(
         collection: 'sessions'
     },
     function (error) {
-        // console.log(error)
+        console.log(error)
     });
 store.on('error', function (error) {
-    // console.log(error)
+    console.log(error)
 });
 
 app.use(session({
@@ -55,8 +55,8 @@ app.use((req, res, next) => {
     next()
 });
 
+
 app.use('/', require('./routes/index'));
-app.use('/api/auth', require('./routes/authentication'));
 
 
 app.use(function (req, res) {
