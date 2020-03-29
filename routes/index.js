@@ -14,7 +14,7 @@ router.all('/', function (req, res) {
     return res.render('index', data);
 });
 
-router.all('/api/auth', require('./auth'))
+router.use('/api/auth', require('./auth'))
 
 router.all("/products", function (req, res) {
     data = {
