@@ -42,7 +42,6 @@ router.all("/products", function (req, res) {
 });
 
 router.all("/dashboard", function (req, res) {
-<<<<<<< HEAD
     if (req.session.user.type === 'vendor') {
         data = {
             title: 'Dashboard',
@@ -64,17 +63,6 @@ router.all("/dashboard", function (req, res) {
         }
         return res.render('buyerdash', data);
     }
-=======
-    data = {
-        title: 'Dashboard',
-        css: ['/static/css/dashboard.css'],
-        js: ['/static/js/dashboard.js'],
-        nav: req.nav,
-        messages: req.flash('notif'),
-        user: req.session.user
-    }
-    return res.render('buyerdash', data);
->>>>>>> 83f5b0ebd8b412225017e858adb4c1eccf0a854a
 });
 
 router.all("/analytics", function (req, res) {
