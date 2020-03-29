@@ -1,0 +1,55 @@
+/* #signin-button {
+    font-family: Poppins;
+}
+
+.nav-link {
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.nav-link:nth-of-type(1) {
+    background-image: linear-gradient(white, white);
+}
+
+.nav-link:nth-of-type(2) {
+    background-image: linear-gradient(var(--color-blue), var(--color-blue));
+}
+
+.nav-link:nth-of-type(3) {
+    background-image: linear-gradient(var(--color-purple), var(--color-purple));
+}
+
+.nav-link:nth-of-type(4) {
+    background-image: linear-gradient(var(--color-red), var(--color-red));
+}
+
+.nav-link:nth-of-type(5) {
+    background-image: linear-gradient(var(--color-orange), var(--color-orange));
+}
+
+.nav-link:nth-of-type(6) {
+    background-image: linear-gradient(var(--color-yellow), var(--color-yellow));
+}
+
+.nav-link:nth-of-type(7) {
+    background-image: linear-gradient(var(--color-green), var(--color-green));
+}
+
+.nav-link:nth-of-type(8) {
+    background-image: linear-gradient(var(--color-aqua), var(--color-aqua));
+}
+
+.nav-link:hover {
+    background-size: 100% 2px;
+}
+
+.nav-link.active {
+    background-size: 100% 2px;
+}
+ */
+.nav-item {
+    color: white !important;
+    font-family: Poppins;
+}

@@ -1,0 +1,16 @@
+@media only screen and (orientation: portrait) {
+    .navbar-brand {
+        font-size: 2.5em !important;
+    }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .navbar-brand {
+        font-size: 1.3em !important;
+    }
+}
+
+.navbar-brand {
+    color: white !important;
+    font-family: Poppins;
+}

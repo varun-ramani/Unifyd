@@ -1,0 +1,42 @@
+header {
+    width: 100%;
+    background-color: var(--color-background-primary-dark);
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+    min-height: 90vh;
+}
+
+#header-tagline {
+    color: var(--color-content-primary-dark);
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 4rem;
+    text-align: left;
+    padding-top: 0rem;
+    animation: introduceHeader 0.5s;
+}
+
+#header-description {
+    color: var(--color-content-secondary-dark);
+    font-family: Poppins;
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+@keyframes introduceHeader {
+    from {
+        opacity: 0;
+        margin-top: -5rem;
+    }
+    
+    to {
+        opacity: 1;
+        margin-top: 0rem;
+    }
+}
+
+.form-check > * {
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+}
