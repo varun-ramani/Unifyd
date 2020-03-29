@@ -2,6 +2,7 @@ var sellerSignupEmail = document.getElementById('seller-signup-email');
 var sellerSignupName = document.getElementById('seller-signup-name');
 var sellerSignupPassword = document.getElementById('seller-signup-password');
 
+var buyerSignupName = document.getElementById('buyer-signup-name');
 var buyerSignupEmail = document.getElementById('buyer-signup-email');
 var buyerSignupPassword = document.getElementById('buyer-signup-password');
 
@@ -47,6 +48,7 @@ function signup() {
     switch (userType) {
         case 'buyer':
             body = JSON.stringify({
+                "name": buyerSignupName.value,
                 "email": buyerSignupEmail.value,
                 "password": buyerSignupPassword.value
             });
