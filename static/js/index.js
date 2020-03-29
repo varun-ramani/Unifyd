@@ -84,7 +84,7 @@ function signup() {
                 authStatus.innerHTML = "It looks like you already have an account! Did you forget your password?";
             } else {
                 authStatus.style.display = "block";
-                authStatus.innerHTML = "Error.";
+                authStatus.innerHTML = responseJson['status'];
             }
         });
 
@@ -122,7 +122,7 @@ function login() {
                 authStatus.innerHTML = "That's the wrong password. Keep trying!";
             } else {
                 authStatus.style.display = "block";
-                authStatus.innerHTML = "Error.";
+                authStatus.innerHTML = responseJson['status'];
             }
         });
 }
