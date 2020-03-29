@@ -28,6 +28,15 @@ router.all("/products", function (req, res) {
     return res.render('products', data)
 });
 
+router.all("/analytics", function(req,res){
+    data={
+        title: 'Analytics',
+        nav: req.nav,
+        messages: req.flash('notif')
+    }
+    return res.render('analytics', data);
+})
+
 // router.all('/logout', function (req, res) {
 //     if (req.session) {
 //         req.session.destroy(err => {
