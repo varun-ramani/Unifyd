@@ -6,7 +6,7 @@ router.post('/signup', (req, res) => {
     var password = req.body['password'];
     var name = req.body['name'];
     var userType = req.body['userType'];
-
+    req.session.email = "vsduf"
     if (email === "" || password === "" || name === "" || userType === "") {
         res.send({
             "status": "incomplete_fields"
@@ -23,6 +23,7 @@ router.post('/login', (req, res) => {
     var password = req.body['password'];
 
     if (email === "" || password === "") {
+        req.flash('nah')
         res.send({
             "status": "incomplete_fields"
         });
