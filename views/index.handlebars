@@ -18,13 +18,18 @@
                         <h1>Get Started</h1>
                         <div class="container">
                             <div id="seller-signup">
-                                <input class="form-control" type="text" id="seller-signup-name" placeholder="Business Name">
-                                <input class="form-control" type="text" id="seller-signup-email" placeholder="Email Address">
-                                <input class="form-control" type="password" id="seller-signup-password" placeholder="Password">
+                                <input class="form-control" type="text" id="seller-signup-name"
+                                    placeholder="Business Name">
+                                <input class="form-control" type="text" id="seller-signup-email"
+                                    placeholder="Email Address">
+                                <input class="form-control" type="password" id="seller-signup-password"
+                                    placeholder="Password">
                             </div>
                             <div id="buyer-signup">
-                                <input class="form-control" type="text" id="buyer-signup-email" placeholder="Email Address">
-                                <input class="form-control" type="password" id="buyer-signup-password" placeholder="Password">
+                                <input class="form-control" type="text" id="buyer-signup-email"
+                                    placeholder="Email Address">
+                                <input class="form-control" type="password" id="buyer-signup-password"
+                                    placeholder="Password">
                             </div>
                             <div class="row" id="usertype-select">
                                 <div class="col-md-3 offset-md-1 my-auto">
@@ -40,12 +45,13 @@
                     </div>
 
                     <div id="login-card">
-                        <h1>Welcome Back</h1>
-                        <div class="container">
-                            <input class="form-control" type="text" id="login-email" placeholder="Email Address">
-                            <input class="form-control" type="password" id="login-password" placeholder="Password">
-                            <button onClick="login()" class="btn btn-success">Let's do this!</button>
-                        </div>
+                        <form action="/login">
+                            <h1>Welcome Back</h1>
+                            <div class="container">
+                                <input class="form-control" type="text" id="login-email" placeholder="Email Address">
+                                <input class="form-control" type="password" id="login-password" placeholder="Password">
+                                <button onClick="login()" class="btn btn-success">Let's do this!</button>
+                            </div>
                     </div>
 
                     <div class="container" id="auth-status"></div>
