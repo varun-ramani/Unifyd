@@ -242,8 +242,7 @@
 
                                     </script>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-danger "
-                                            data-dismiss="modal">Delete
+                                        <button type="button" class="btn btn-danger " data-dismiss="modal">Delete
                                             <i class="fas fa-trash ml-2" aria-hidden="true"></i>
 
                                         </button>
@@ -273,7 +272,7 @@
                         <span aria-hidden="true" class="white-text">×</span>
                     </button>
                 </div>
-    
+
                 <!--Body-->
                 <div class="modal-body">
                     <div class="text-center">
@@ -281,17 +280,28 @@
                             <label for="name">Product Name</label>
                         </strong>
                         <strong>
-                            <input id="name" class="form-control form-control-lg" type="text" >
+<<<<<<< HEAD
+                            <input id="name" class="form-control form-control-lg" type="text">
                         </strong>
                     </div>
-    
+                    <div class="text-center">
+                        <strong>
+                            <label for="name">Categories</label>
+                        </strong>
+                        <strong>
+                            <input id="name" class="form-control form-control-lg" type="text">
+=======
+                            <input id="nameAdd" class="form-control form-control-lg" type="text" >
+>>>>>>> d374d19c2fa7bdcdb96f172f26724e9f12993a1d
+                        </strong>
+                    </div>
                     <hr>
                     <p class="text-center">
                         <strong>Description</strong>
                     </p>
                     <!--Basic textarea-->
                     <div class="md-form">
-                        <textarea type="text" id="description" class="md-textarea form-control" rows="3"></textarea>
+                        <textarea type="text" id="descriptionAdd" class="md-textarea form-control" rows="3"></textarea>
                     </div>
                     <hr>
                     <div class="row">
@@ -300,30 +310,35 @@
                                 <label for="name">Price</label>
                             </strong>
                             <strong>
-                                <input autocomplete="off" id="name" class="form-control form-control-lg" type="text">
+                                <input autocomplete="off" id="priceAdd" class="form-control form-control-lg" type="text">
                             </strong>
                         </div>
                         <div class="col-6">
                             <strong>
-                                <label for="name">Quantity</label>
+                                <label for="quantity">Quantity</label>
                             </strong>
                             <strong>
-                                <input autocomplete="off"  id="name" class="form-control form-control-lg" type="text">
+<<<<<<< HEAD
+                                <input autocomplete="off" id="name" class="form-control form-control-lg" type="text">
+=======
+                                <input autocomplete="off"  id="quantityAdd" class="form-control form-control-lg" type="text">
+>>>>>>> d374d19c2fa7bdcdb96f172f26724e9f12993a1d
                             </strong>
                         </div>
                     </div>
                     <hr />
                     <strong>
-                        <label for="name">Images</label>
+                        <label for="images">Images</label>
                     </strong>
                     <strong>
-                        <input id="name" class="form-control form-control-lg" type="text">
+                        <input id="imagesAdd" class="form-control form-control-lg" type="text">
+                        <p id="addStatus"></p>
                     </strong>
                 </div>
-    
+
                 <!--Footer-->
                 <div class="modal-footer justify-content-center">
-                    <a type="button" class="btn btn-success waves-effect waves-light">Add
+                    <a type="button" class="btn btn-success waves-effect waves-light" onClick="addProduct()">Add
                         <i class="fa fa-save ml-1"></i>
                     </a>
                     <a type="button" class="btn btn-primary waves-effect" data-dismiss="modal">Cancel</a>

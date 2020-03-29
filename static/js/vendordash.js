@@ -1,7 +1,12 @@
 var searchField = document.getElementById('search-field');
 var searchResults = document.getElementById("search-results");
 var other = document.getElementById("other-content");
-
+var nameAdd = document.getElementById("nameAdd");
+var descriptionAdd = document.getElementById("descriptionAdd");
+var priceAdd = document.getElementById("priceAdd");
+var quantityAdd = document.getElementById("quantityAdd");
+var imagesAdd = document.getElementById("imagesAdd");
+var addStatus = document.getElementById("addStatus")
 var productTemplate = document.getElementById('products-template').innerHTML;
 
 function search() {
@@ -52,4 +57,37 @@ function search() {
             });
 
     }
+}
+
+function addProduct(){
+    
+    var product = ""; 
+    product = JSON.stringify({
+        "name": nameAdd.value,
+        "description": descriptionAdd.value,
+        "price": priceAdd.value,
+        "quantity": quantityAdd.value,
+        "images": imagesAdd.value.replace(/\s/g,""),
+    })
+    console.log(product);
+    fetch('/api/product/add', {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "product": product
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            if (responseJson['status'] === "register/success") {
+                addStatus.style.display = "block";
+                $('#myModal').modal({
+                    show: false
+                })
+                addStatus.innerHTML = "Thanks for signing in";
+            } else {
+                addStatus.style.display = "block";
+                addStatus.innerHTML = responseJson['status'];
+            }
+        });
 }
