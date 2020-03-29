@@ -50,18 +50,19 @@ function signup() {
             body = JSON.stringify({
                 "name": buyerSignupName.value,
                 "email": buyerSignupEmail.value,
-                "password": buyerSignupPassword.value
+                "password": buyerSignupPassword.value,
+                "userType": 'buyer'
             });
             break;
         case 'seller':
             body = JSON.stringify({
                 "email": sellerSignupEmail.value,
                 "password": sellerSignupPassword.value,
-                "name": sellerSignupName.value
+                "name": sellerSignupName.value,
+                "userType": 'seller'
             });
             break;
     }
-
 
     fetch('/api/auth/signup', {
         "method": "POST",
@@ -83,7 +84,7 @@ function signup() {
                 authStatus.innerHTML = "It looks like you already have an account! Did you forget your password?";
             } else {
                 authStatus.style.display = "block";
-                authStatus.innerHTML = "Database error.";
+                authStatus.innerHTML = "Error.";
             }
         });
 
@@ -121,7 +122,7 @@ function login() {
                 authStatus.innerHTML = "That's the wrong password. Keep trying!";
             } else {
                 authStatus.style.display = "block";
-                authStatus.innerHTML = "Database error.";
+                authStatus.innerHTML = "Error.";
             }
         });
 }
