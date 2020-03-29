@@ -1,0 +1,28 @@
+body {
+    background-color: var(--color-background-primary-dark) !important;
+}
+
+.box {
+    padding: 60px 0px;
+}
+#products-headline{
+    color: var(--color-content-primary-dark);
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 0rem;
+    animation: introduceHeader 0.5s;
+
+}
+.box-part {
+    background: #FFF;
+    border-radius: 0;
+    padding: 60px 10px;
+    margin: 30px 0px;
+}
+
+
+.text {
+    font-size: 15px;
+}
