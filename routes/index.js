@@ -27,7 +27,16 @@ router.all("/products", function (req, res) {
     }
     return res.render('products', data)
 });
-
+router.all("/dashboard/", function(req,res){
+    data = {
+        title: 'Dashboard',
+        css: ['/static/css/dashboard.css'],
+        js: ['/static/js/products.js'],
+        nav: req.nav,
+        messages: req.flash('notif')
+    }
+    return res.render('buyerdashboard',data);
+});
 router.all("/analytics", function(req,res){
     data={
         title: 'Analytics',
