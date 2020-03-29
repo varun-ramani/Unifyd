@@ -26,7 +26,7 @@ router.use((req, res, next) => {
     }
 });
 
-router.use('/api/products', require('./products'))
+router.use('/api/products', require('./products'));
 
 router.all("/products", function (req, res) {
     var searchPlaceholder = "";
@@ -39,6 +39,25 @@ router.all("/products", function (req, res) {
         user: req.session.user
     }
     return res.render('products', data)
+});
+
+router.all('/cart', function (req, res) {
+    req.session.cart = [
+        {
+            "name": "Toilet Paper1", "description": "An utter necessity!", "price": 12.30, "categories": ["Bathroom"], "images": ["https://wpcdn.us-east-1.vip.tn-cloud.net/www.yaktrinews.com/content/uploads/2020/03/MGN_1280x720_00315P00-ZHJSU-1024x576.jpg", "https://cdn.shopify.com/s/files/1/0049/4449/4638/products/71pm_lMBlML._SL1500_570x570_crop_top.jpg?v=1565798734"]
+        }
+    ];
+
+    data = {
+        title: 'Cart',
+        css: ['/static/css/cart.css'],
+        js: ['/static/js/cart.js'],
+        nav: req.nav,
+        user: req.session.user,
+        cart: req.session.cart
+    }
+
+    return res.render('cart', data);
 });
 
 router.all("/dashboard", function (req, res) {
