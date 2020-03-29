@@ -26,6 +26,12 @@ router.post('/signup', (req, res) => {
             "status": "error"
         });
     }
+    dbres = dbUsers.getUser(email)
+    if (dbres.res) {
+        return res.send({
+            "status": "register/user_exists"
+        });
+    }
     bcrypt.hash(password, config.saltRounds, function (err, hash) {
         if (err) {
             return res.send({
@@ -61,13 +67,14 @@ router.post('/login', (req, res) => {
     var password = req.body['password'];
 
     if (email === "" || password === "") {
-        req.flash('nah')
         return res.send({
             "status": "incomplete_fields"
         });
     }
 
-    res.send({
+
+
+    return res.send({
         "status": "login/success"
     });
 });
