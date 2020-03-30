@@ -134,6 +134,8 @@ router.all("/checkout", async function (req, res) {
             return res.redirect('/products');
         }
         date = new Date();
+        ind = Math.floor(Math.random() * (config.coordinates.length) + 1);
+        
         transaction = {
             'buyerOid': req.session.user.id.toString(),
             'vendorOid': dbres1.res.vendorOid.toString(),
@@ -142,7 +144,9 @@ router.all("/checkout", async function (req, res) {
             'price': item.price,
             'total': item.quantity * item.price,
             'date': date,
-            'status': 'Processing'
+            'status': 'Processing',
+            'lat': config.coordinates[ind].lat,
+            'long': config.coordinates[ind].long
         }
         console.log(transaction)
         dbres = await dbTrans.addTransaction(transaction)
