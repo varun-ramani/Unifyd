@@ -3,8 +3,11 @@
     <h1 id="products-headline">Vendor Dashboard</h1>
     <br>
     <div class="row">
-        <a class="btn col col-4 btn-success" data-toggle="modal" data-target="#add-product" role="button">Add Product</a>
+        <button type="button" id="mymodal" class="btn col col-4 btn-success" data-toggle="modal" data-target="#add">
+            Add Products
+        </button>
         <div class="col col-8" id="search">
+            <label for="search-field" style="color:white">Search for products</label>
             <input class="form-control col-12" type="text" id="search-field" placeholder="Search our products"
                 oninput="search()">
         </div>
@@ -178,83 +181,6 @@
             </div>
         </div>
 
-    <div class="modal fade right" id="add-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
-        <div class="modal-content">
-            <!--Header-->
-            <div class="modal-header">
-                <p class="heading lead">Feedback request
-                </p>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">×</span>
-                </button>
-            </div>
-
-                    <!--Body-->
-            <div class="modal-body">
-                <div class="text-center">
-                    <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>
-                    <p>
-                        <strong>Your opinion matters</strong>
-                    </p>
-                    <p>Have some ideas how to improve our product?
-                        <strong>Give us your feedback.</strong>
-                    </p>
-                </div>
-
-                <hr>
-
-                <!-- Radio -->
-                <p class="text-center">
-                    <strong>Your rating</strong>
-                </p>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
-                    <label class="form-check-label" for="radio-179">Very good</label>
-                </div>
-
-                <div class="form-check mb-4">
-                    <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
-                    <label class="form-check-label" for="radio-279">Good</label>
-                </div>
-
-                <div class="form-check mb-4">
-                    <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
-                    <label class="form-check-label" for="radio-379">Mediocre</label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
-                    <label class="form-check-label" for="radio-479">Bad</label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
-                    <label class="form-check-label" for="radio-579">Very bad</label>
-                </div>
-                <!-- Radio -->
-
-                <p class="text-center">
-                    <strong>What could we improve?</strong>
-                </p>
-                <!--Basic textarea-->
-                <div class="md-form">
-                    <textarea type="text" id="form79textarea" class="md-textarea form-control" rows="3"></textarea>
-                    <label for="form79textarea">Your message</label>
-                </div>
-
-            </div>
-
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary waves-effect waves-light">Send
-                    <i class="fa fa-paper-plane ml-1"></i>
-                </a>
-                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-            </div>
-            </div>
-            </div>
-        </div>
         <div class="modal fade" id="modalNum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             style="background-color: rgb(53, 53, 78, 0.9);" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -316,10 +242,12 @@
 
                                     </script>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-outline-secondary "
-                                            data-dismiss="modal">Close</button>
-                                        <button class="btn btn-primary">Add to cart
-                                            <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
+                                        <button type="button" class="btn btn-danger " data-dismiss="modal">Delete
+                                            <i class="fas fa-trash ml-2" aria-hidden="true"></i>
+
+                                        </button>
+                                        <button class="btn btn-primary">Submit
+                                            <i class="fas fa-check ml-2" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -331,3 +259,104 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        style="background-color: rgb(53, 53, 78, 0.9);" aria-hidden="true">
+        <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Add Product
+                    </p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <strong>
+                            <label for="name">Product Name</label>
+                        </strong>
+                        <strong>
+<<<<<<< HEAD
+                            <input id="nameAdd" class="form-control form-control-lg" type="text">
+=======
+                            <input id="name" class="form-control form-control-lg" type="text">
+>>>>>>> 1eaf0982b3851ecf68139842ff4cd809fcb7bdc9
+                        </strong>
+                    </div>
+                    <div class="text-center">
+                        <strong>
+                            <label for="categoryAdd">Categories</label>
+                        </strong>
+                        <strong>
+<<<<<<< HEAD
+                            <input id="categoryAdd" class="form-control form-control-lg" type="text">
+=======
+                            <input id="name" class="form-control form-control-lg" type="text">
+>>>>>>> 1eaf0982b3851ecf68139842ff4cd809fcb7bdc9
+                        </strong>
+                    </div>
+                    <hr>
+                    <p class="text-center">
+                        <strong>Description</strong>
+                    </p>
+                    <!--Basic textarea-->
+                    <div class="md-form">
+                        <textarea type="text" id="descriptionAdd" class="md-textarea form-control" rows="3"></textarea>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>
+                                <label for="name">Price Start</label>
+                            </strong>
+                            <strong>
+                                <input autocomplete="off" id="priceSAdd" class="form-control form-control-lg"
+                                    type="text">
+                            </strong>
+                        </div>
+                        <div class="col-6">
+                            <strong>
+                                <label for="name">Price End</label>
+                            </strong>
+                            <strong>
+                                <input autocomplete="off" id="priceEAdd" class="form-control form-control-lg"
+                                    type="text">
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <strong>
+                                <label for="quantity">Limit</label>
+                            </strong>
+                            <strong>
+                                <input autocomplete="off" id="limitAdd" class="form-control form-control-lg"
+                                    type="text">
+                            </strong>
+                        </div>
+                    </div>
+                    <hr />
+                    <strong>
+                        <label for="images">Images</label>
+                    </strong>
+                    <strong>
+                        <input id="imagesAdd" class="form-control form-control-lg" type="text">
+                        <p id="addStatus"></p>
+                    </strong>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-success waves-effect waves-light" onClick="addProduct()">Add
+                        <i class="fa fa-save ml-1"></i>
+                    </a>
+                    <a type="button" class="btn btn-primary waves-effect" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div> 

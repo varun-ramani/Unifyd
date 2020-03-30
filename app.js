@@ -74,7 +74,8 @@ app.use(async (req, res, next) => {
                 req.session.user = {
                     email: dbres.res.email,
                     name: dbres.res.name,
-                    type: dbres.res.type
+                    type: dbres.res.type,
+                    id: dbres.res._id
                 }
                 if (req.session.user.type == 'buyer') {
                     req.nav.login = false

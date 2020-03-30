@@ -26,7 +26,6 @@ db.addProduct = function (data) {
         'categories': data.categories,
         'images': data.images,
         'vendorOid': data.vendoroid,
-        'available': data.available,
         'limit': data.limit,
         'priceStart': data.priceStart,
         'priceEnd': data.priceEnd
