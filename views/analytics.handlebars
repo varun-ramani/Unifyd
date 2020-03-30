@@ -55,9 +55,20 @@
     new Chart(document.getElementById("revenueChart"), {
         type: 'line',
         data: {
-            labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
+            labels: [
+                "March 9", 
+                "March 19", 
+                "March 11", 
+                "March 12", 
+                "March 13",  
+                "March 14", 
+                "March 15", 
+                "March 16",  
+                "March 17", 
+                "March 18"
+            ],
             datasets: [{
-                data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                data: [100, 114, 200, 106, 60, 111, 133, 221, 300, 500],
                 label: "Revenue",
                 borderColor: "#3e95cd",
                 fill: false
