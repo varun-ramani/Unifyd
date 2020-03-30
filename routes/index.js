@@ -113,6 +113,15 @@ router.all("/analytics", function (req, res) {
     }
     return res.render('analytics', data);
 })
+router.all("/checkout", function (req, res) {
+    if(!req.session.cart.items){
+        req.session.cart.items = []
+        req.flash('notif', 'Nothing in your cart!')
+        return res.redirect('/products');
+    }
+    
+    return res.redirect('/dashboard');
+})
 
 router.all('/logout', function (req, res) {
     if (req.session) {
