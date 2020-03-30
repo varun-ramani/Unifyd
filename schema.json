@@ -9,7 +9,7 @@ images - string [] of urls
 available (stock) - integer
 limit - integer
 
-
+ 
 Buyers
 name - String
 email - String
