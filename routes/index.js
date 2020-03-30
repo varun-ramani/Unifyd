@@ -68,7 +68,7 @@ router.all('/cart', function (req, res) {
     return res.render('cart', data);
 });
 
-router.all("/dashboard", function (req, res) {
+router.all("/dashboard", async function (req, res) {
     if (req.session.user.type === 'vendor') {
         data = {
             title: 'Dashboard',
@@ -77,7 +77,8 @@ router.all("/dashboard", function (req, res) {
             nav: req.nav,
             messages: req.flash('notif'),
             user: req.session.user
-        }
+        };
+
         return res.render('vendordash', data);
     } else {
         data = {
@@ -86,8 +87,14 @@ router.all("/dashboard", function (req, res) {
             js: ['/static/js/dashboard.js'],
             nav: req.nav,
             messages: req.flash('notif'),
+            transactions: [],
             user: req.session.user
         }
+
+        var transactions = await dbTrans.getTransactionsByBuyer({id: req.session.user.id});
+
+        console.log(transactions.res);
+
         return res.render('buyerdash', data);
     }
 });

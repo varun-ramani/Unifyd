@@ -32,7 +32,7 @@ db.addTransaction = function (data) {
 db.getTransactionsByVendor = function (data) {
     oid = new mongodb.ObjectID(data.id);
     return new Promise(function (resolve, reject) {
-        mongo.getDb().collection('transactions').find({ 'vendorOid': oid }, function (err, result) {
+        mongo.getDb().collection('transactions').find({ 'vendorOid': oid }).toArray(function (err, result) {
             if (err) {
                 resolve({ 'status': 'fail' })
             } else {
@@ -45,15 +45,14 @@ db.getTransactionsByVendor = function (data) {
 db.getTransactionsByBuyer = function (data) {
     oid = new mongodb.ObjectID(data.id);
     return new Promise(function (resolve, reject) {
-        mongo.getDb().collection('transactions').find({ 'buyerOid': oid }, function (err, result) {
+        mongo.getDb().collection('transactions').find({ 'buyerOid': oid }).toArray(function (err, result) {
             if (err) {
                 resolve({ 'status': 'fail' })
             } else {
-                resolve({ 'status': 'success', res: result })
+                resolve({ 'status': 'success', res: result});
             }
         });
     })
 }
-
 
 module.exports = db;
