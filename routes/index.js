@@ -80,6 +80,49 @@ router.all("/dashboard", async function (req, res) {
             user: req.session.user
         };
 
+        var transactions = (await dbTrans.getTransactionsByVendor({id: req.session.user.id})).res;
+        var recentTransactions = (await dbTrans.getTransactionsByVendor({id: req.session.user.id})).res;
+
+        var resolvedTransactions = [];
+
+        for (var index in transactions) {
+            var transaction = transactions[index];
+            var product = (await dbProducts.getProductById({id: transaction.productOid})).res;
+            var buyer = (await dbUsers.getUserById({id: transaction.buyerOid})).res;
+
+            resolvedTransactions.push({
+                "buyer": buyer,
+                "product": product,
+                "lat": transaction.lat,
+                "long": transaction.long,
+                "price": transaction.price
+            });
+        }
+
+        var recentTransactions = (await dbTrans.getRecentTransactionsByVendor({id: req.session.user.id})).res;
+
+        var resolvedRecentTransactions = [];
+
+        for (var index in recentTransactions) {
+            var transaction = recentTransactions[index];
+            var product = (await dbProducts.getProductById({id: transaction.productOid})).res;
+            var vendor = (await dbUsers.getUserById({id: transaction.buyerOid})).res;
+
+            resolvedRecentTransactions.push({
+                "buyer": buyer,
+                "product": product,
+                "lat": transaction.lat,
+                "long": transaction.long,
+                "price": transaction.price,
+                "status": transactions.status
+            });
+        }
+
+        data.transactions = resolvedTransactions;
+        data.recentTransactions = resolvedRecentTransactions.slice(0, 4);
+
+        console.log(data.transactions);
+
         return res.render('vendordash', data);
     } else {
         data = {

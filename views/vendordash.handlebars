@@ -24,102 +24,21 @@
             </div>
         </div>
         <div id="box">
-            <div id="" class="col col-md-3">
-                <div class="card productcard col p-0 mr-3 mb-3" style="border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
-                        data-target="#mapModal" data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            {{#each recentTransactions}}
             <div id="" class="col col-md-3">
                 <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
-                        data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
+                        <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
+                            data-lat='{{this.lat}}' data-lng='{{this.long}}' onClick="updateModal('{{this.status}}')">
                         <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                            <h4 style="color: white" class="card-title">{{this.product.name}}</h4>
+                            <h5 style="color: white" class="card-text">${{this.price}}</h5>
                             <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
+                                class="card-text"><i>{{this.description}}</i></p>
                         </div>
                     </a>
                 </div>
             </div>
-            <div id="" class="col col-md-3">
-                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
-                        data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div id="" class="col col-md-3">
-                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
-                        data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div id="" class="col col-md-3">
-                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
-                        data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div id="" class="col col-md-3">
-                <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
-                        data-lat='38.897957' data-lng='-77.036560'>
-                        <div class="img-hover-zoom m-0">
-                            <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: white" class="card-title">productName</h4>
-                            <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
-                            <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                class="card-text"><i>description</i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            {{/each}}
         </div>
         <br>
         <div clas="row">
@@ -139,24 +58,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Hand Sanitzer</td>
-                    <td>Target</td>
-                    <td>$3000</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Bread</td>
-                    <td>Costco</td>
-                    <td>$20</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Toilet Paper</td>
-                    <td>Walmart</td>
-                    <td>$50000</td>
-                </tr>
+                {{#each transactions}}
+                    <tr>
+                        <th scope="row">{{addOne @index}}</th>
+                        <td>{{this.product.name}}</td>
+                        <td>{{this.buyer.name}}</td>
+                        <td>${{this.price}}</td>
+                    </tr>
+                {{/each}}
             </tbody>
         </table>
 
