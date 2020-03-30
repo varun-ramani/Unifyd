@@ -1,6 +1,6 @@
 <div class="container">
     <br>
-    <h1 id="dashboard-headline">Buyer Dashboard</h1>
+    <h1 id="dashboard-headline">{{user.name}}'s Dashboard</h1>
     <br>
 
     <div class="row">
@@ -21,12 +21,13 @@
             <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
                     <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#mapModal"
                         data-lat='38.897957' data-lng='-77.036560'>
+        
                     <div class="img-hover-zoom m-0">
                         <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
                     </div>
                     <div class="card-body">
-                        <h4 style="color: white" class="card-title">productName</h4>
-                        <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                        <h4 style="color: white" class="card-title mb-1">productName</h4>
+                        <h6 style="color: white" class="card-text mt-1">$priceStart-$priceEnd</h6>
                         <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
                             class="card-text"><i>description</i></p>
                     </div>
