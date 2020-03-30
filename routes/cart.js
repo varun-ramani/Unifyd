@@ -43,7 +43,7 @@ router.post('/addItem', async (req, res) => {
             "images": product.images,
             "_id": product['_id'].toString()
         });
-        req.session.cart.totalPrice = Number.parseFloat(item.price) + Number.parseFloat(req.session.cart.totalPrice);
+        req.session.cart.totalPrice = Number.parseFloat(item.price)*quantity + Number.parseFloat(req.session.cart.totalPrice);
     } catch (e) {
         console.log(e);
     }
@@ -66,7 +66,7 @@ router.post('/removeItem', (req, res) => {
 
         if (id === _id) {
             console.log("Found match at index " + index);
-            req.session.cart.totalPrice = req.session.cart.totalPrice - item.price;
+            req.session.cart.totalPrice = req.session.cart.totalPrice - item.price * item.quantity;
             req.session.cart.items.splice(index, 1);
             return res.send(req.session.cart.items);
         }
