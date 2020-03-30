@@ -1,6 +1,23 @@
 var cart = document.getElementById('cart-items');
 var productTemplate = document.getElementById('products-template').innerHTML;
 
+function removeItem(id) {
+    var miniCard = document.getElementById('mini-card-' + id);
+    var card = document.getElementById('card-' + id);
+
+    card.parentNode.removeChild(card);
+    miniCard.parentNode.removeChild(miniCard);
+
+    fetch('/api/cart/removeItem', {
+        "method": "POST", 
+        "headers": {
+            "Content-type": "application/json"
+        },
+        "body": JSON.stringify({"id": id})
+    })
+    .then(response => console.log(response));
+}
+
 // fetch("/api/products/popular") // get endpoitn
 //     .then(response => response.json())
 //     .then(responseJson => {

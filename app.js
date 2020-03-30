@@ -27,7 +27,7 @@ app.engine('handlebars', hbs({
         },
 
         toCurrency: function(value) {
-            return value.toFixed(2);
+            return value.toFixed(2) + "";
         }
     }
 }));

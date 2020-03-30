@@ -48,7 +48,7 @@ function search() {
                         .replace(/limit/g, productList[index]['limit'])
                         .replace(/CarImg/g, carimg)
                         .replace(/style="display: none"/g, "")
-                        .replace(/itemOid/g, productList[index]["itemOid"]);
+                        .replace(/itemOid/g, productList[index]["_id"].toString());
                 }
 
 
@@ -84,7 +84,6 @@ fetch("/api/products/popular")
         var newHTML = "";
 
         for (var index in productList) {
-            console.log(productList[index])
             var carimg = ""
             var categories = ""
             for (var i = 0; i < productList[index]['images'].length; i++) {
@@ -108,6 +107,7 @@ fetch("/api/products/popular")
                 .replace(/limit/g, productList[index]['limit'])
                 .replace(/CarImg/g, carimg)
                 .replace(/style="display: none"/g, "")
+                .replace(/itemOid/g, productList[index]["_id"].toString());
         }
 
         popularNow.innerHTML = newHTML;

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var config = require('../config');
-const mongo = require('../database/products');
+const dbProducts = require('../database/products');
 
 router.post('/addItem', async (req, res) => {
     var item = req.body;
@@ -17,9 +17,10 @@ router.post('/addItem', async (req, res) => {
             "status": "nan"
         });
     }
+    
+    console.log(item);
 
-    var product = (await mongo.getProductById(item.itemOid)).res;
-
+    var product = (await dbProducts.getProductById({id: item.itemOid})).res;
     console.log(`Price: ${price}`);
     console.log(`Product Price: ${product.priceStart}`);
     console.log(`Product Price: ${product.priceEnd}`);
@@ -38,9 +39,11 @@ router.post('/addItem', async (req, res) => {
             "name": product.name,
             "description": product.description,
             "price": item.price,
-            "images": product.images
+            "quantity": quantity,
+            "images": product.images,
+            "_id": product['_id']
         });
-        req.session.cart.totalPrice += item.price;
+        req.session.cart.totalPrice = Number.parseFloat(item.price) + Number.parseFloat(req.session.cart.totalPrice);
     } catch (e) {
         console.log(e);
     }
@@ -53,7 +56,20 @@ router.post('/addItem', async (req, res) => {
 });
 
 router.post('/removeItem', (req, res) => {
-    
+    var id = req.body.id.toString();
+
+    for (var index in req.session.cart.items) {
+        var item = req.session.card.items[index];
+
+        var _id = item._id.toString();
+
+        if (id === _id) {
+            console.log("Found match at index " + index);
+            req.session.cart.totalPrice = req.session.cart.totalPrice - item.price;
+            req.session.cart.items.splice(index, 1);
+            return res.send(req.session.cart.items);
+        }
+    }
 });
 
 module.exports = router;

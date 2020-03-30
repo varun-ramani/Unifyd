@@ -43,7 +43,7 @@ db.addProduct = function (data) {
 }
 
 db.getProductById = function (data) {
-    oid = new mongodb.ObjectID(data);
+    oid = new mongodb.ObjectID(data.id);
     return new Promise(function (resolve, reject) {
         mongo.getDb().collection('products').findOne({ '_id': oid }, function (err, result) {
             if (err) {
