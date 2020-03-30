@@ -41,7 +41,7 @@ router.post('/addItem', async (req, res) => {
             "price": item.price,
             "quantity": quantity,
             "images": product.images,
-            "_id": product['_id']
+            "_id": product['_id'].toString()
         });
         req.session.cart.totalPrice = Number.parseFloat(item.price) + Number.parseFloat(req.session.cart.totalPrice);
     } catch (e) {
@@ -56,12 +56,13 @@ router.post('/addItem', async (req, res) => {
 });
 
 router.post('/removeItem', (req, res) => {
-    var id = req.body.id.toString();
-
+    var id = req.body.id;
     for (var index in req.session.cart.items) {
-        var item = req.session.card.items[index];
+        var item = req.session.cart.items[index];
 
-        var _id = item._id.toString();
+        var _id = item['_id'];
+
+        console.log(_id);
 
         if (id === _id) {
             console.log("Found match at index " + index);
