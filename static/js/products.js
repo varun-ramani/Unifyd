@@ -74,7 +74,10 @@ function addItem(modalNum, itemOid) {
         }
     })
     .then(response => response.json())
-    .then(responseJson => console.log(responseJson));
+    .then(responseJson => {
+        console.log(responseJson);
+        
+    });
 }
 
 fetch("/api/products/popular")
