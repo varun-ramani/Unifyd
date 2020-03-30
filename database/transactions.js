@@ -12,7 +12,10 @@ db.addTransaction = function (data) {
         'quantity': data.quantity,
         'price': data.price,
         'total': data.total,
-        'date': data.date
+        'date': data.date,
+        'status': data.status,
+        'lat': data.lat,
+        'long': data.long
     }
     return new Promise(function (resolve, reject) {
         mongo.getDb().collection('transactions').insertOne(transaction, function (err, res) {

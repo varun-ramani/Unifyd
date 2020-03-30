@@ -2,9 +2,12 @@ var searchField = document.getElementById('search-field');
 var searchResults = document.getElementById("search-results");
 var other = document.getElementById("other-content");
 var nameAdd = document.getElementById("nameAdd");
+var categoryAdd = document.getElementById("categoryAdd");
 var descriptionAdd = document.getElementById("descriptionAdd");
-var priceAdd = document.getElementById("priceAdd");
-var quantityAdd = document.getElementById("quantityAdd");
+var priceSAdd = document.getElementById("priceSAdd");
+var priceEAdd = document.getElementById("priceEAdd");
+
+var limitAdd = document.getElementById("limitAdd");
 var imagesAdd = document.getElementById("imagesAdd");
 var addStatus = document.getElementById("addStatus")
 var productTemplate = document.getElementById('products-template').innerHTML;
@@ -58,33 +61,32 @@ function search() {
 
     }
 }
+function addProduct() {
+    addStatus.style.display = "none";
 
-function addProduct(){
-    
-    var product = ""; 
+    var product = "";
     product = JSON.stringify({
         "name": nameAdd.value,
         "description": descriptionAdd.value,
-        "price": priceAdd.value,
-        "quantity": quantityAdd.value,
-        "images": imagesAdd.value.replace(/\s/g,""),
+        "priceStart": parseFloat(priceSAdd.value),
+        "priceEnd": parseFloat(priceEAdd.value),
+        "limit": parseInt(limitAdd.value),
+        "images": imagesAdd.value.replace(/\s/g, ""),
+        "categories": categoryAdd.value.replace(/\s/g, "")
     })
+
     console.log(product);
-    fetch('/api/product/add', {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "product": product
-        })
+    fetch('/api/products/add', {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": product
+    })
         .then(response => response.json())
         .then(responseJson => {
-            if (responseJson['status'] === "register/success") {
-                addStatus.style.display = "block";
-                $('#myModal').modal({
-                    show: false
-                })
-                addStatus.innerHTML = "Thanks for signing in";
+            if (responseJson['status'] == "success") {
+                location.href = "/dashboard";
             } else {
                 addStatus.style.display = "block";
                 addStatus.innerHTML = responseJson['status'];

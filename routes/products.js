@@ -35,7 +35,7 @@ router.post('/add', async function (req, res) {
     description = req.body.description
     categories = req.body.categories.replace(/ /g, "").split(",")
     images = req.body.images.replace(/ /g, "").split(",")
-    vendorOid = req.session.id
+    vendorOid = req.session.user.id
     limit = req.body.limit
     priceStart = req.body.priceStart
     priceEnd = req.body.priceEnd
@@ -77,7 +77,7 @@ router.post('/delete', async function (req, res) {
     description = req.body.description
     categories = req.body.categories.replace(/\s/g, "").split(",")
     images = req.body.images.replace(/\s/g, "").split(",")
-    vendorOid = req.session.id
+    vendorOid = req.session.user.id
     limit = req.body.limit
     priceStart = req.body.priceStart
     priceEnd = req.body.priceEnd

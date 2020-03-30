@@ -36,7 +36,7 @@ router.post('/addItem', async (req, res) => {
 
     try {
         req.session.cart.items.push({
-            "name": product.name,
+            "name": product.name, 
             "description": product.description,
             "price": item.price,
             "quantity": quantity,

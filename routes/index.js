@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var config = require('../config')
+var dbTrans = require('../database/transactions')
+var dbProducts = require('../database/products')
 
 router.all('/', function (req, res) {
     data = {
@@ -89,18 +91,18 @@ router.all("/dashboard", function (req, res) {
         return res.render('buyerdash', data);
     }
 });
-router.all("/cart", function(req,res){
+router.all("/cart", function (req, res) {
     data = {
         title: 'Cart',
         css: ['/static/css/cart.css'],
-        js: ['static/js/handlebars.js','/static/js/cart.js'],
+        js: ['static/js/handlebars.js', '/static/js/cart.js'],
         nav: req.nav,
         messages: req.flash('notif'),
         user: req.session.user,
         cart: req.session.cart
     }
     return res.render('cart', data);
-   
+
 })
 router.all("/analytics", function (req, res) {
     data = {
@@ -113,13 +115,44 @@ router.all("/analytics", function (req, res) {
     }
     return res.render('analytics', data);
 })
-router.all("/checkout", function (req, res) {
-    if(!req.session.cart.items){
+router.all("/checkout", async function (req, res) {
+    if (!req.session.cart.items) {
         req.session.cart.items = []
         req.flash('notif', 'Nothing in your cart!')
         return res.redirect('/products');
     }
-    
+
+    for (var i = 0; i < req.session.cart.items.length; i++) {
+        item = req.session.cart.items[i]
+        dbres1 = dbProducts.getProductById({ "id": item._id, })
+        if (dbres1.status == "fail") {
+            req.flash('notif', 'Checkout failed! DB Error')
+            return res.redirect('/products');
+        }
+        if(!dbres1.res){
+            req.flash('notif', 'Checkout failed! No vendor!')
+            return res.redirect('/products');
+        }
+        date = new Date();
+        transaction = {
+            'buyerOid': req.session.user.id,
+            'vendorOid': dbres1.res.vendorOid,
+            'productOid': item._id,
+            'quantity': item.quantity,
+            'price': item.price,
+            'total': item.quantity * item.price,
+            'date': date
+        }
+        dbres = dbTrans.addTransaction()
+        if (dbres.status == "success") {
+            req.flash('notif', 'Successful checkout')
+            return res.redirect('/products');
+        }else{
+            req.flash('notif', 'Failed checkout')
+            return res.redirect('/products');
+        }
+    }
+
     return res.redirect('/dashboard');
 })
 
