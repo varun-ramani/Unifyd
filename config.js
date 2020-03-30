@@ -16,6 +16,53 @@ config.session = {
     rolling: true,
     saveUninitialized: false
 }
+
+config.coordinates = [
+    {
+        lat: 40.29053,
+        long: -74.6410546
+    },
+    {
+        lat: 40.2894825,
+        long: -74.6541009
+    },
+    {
+        lat: 40.288173,
+        long: -74.6592507
+    },
+    {
+        lat: 40.2711482,
+        long: -74.6592507
+    },
+    {
+        lat: 40.2813636,
+        long: -74.6678338
+    },
+    {
+        lat: 40.2779587,
+        long: -74.6317849
+    },
+    {
+        lat: 40.3002188,
+        long: -74.6307549
+    },
+    {
+        lat: 40.2999569,
+        long: -74.5912728
+    },
+    {
+        lat: 40.2501887,
+        long: -74.6067223
+    },
+    {
+        lat: 40.2742916,
+        long: -74.5452676
+    },
+    {
+        lat: 40.3054554,
+        long: -74.5593438
+    },
+]
 config.saltRounds = 10
 
 module.exports = config

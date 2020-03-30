@@ -128,6 +128,7 @@ router.all("/checkout", async function (req, res) {
         req.flash('notif', 'Nothing in your cart!')
         return res.redirect('/products');
     }
+    ind = Math.floor(Math.random() * (config.coordinates.length) + 1);
 
     for (var i = 0; i < req.session.cart.items.length; i++) {
         item = req.session.cart.items[i]
@@ -141,6 +142,7 @@ router.all("/checkout", async function (req, res) {
             return res.redirect('/products');
         }
         date = new Date();
+        
         transaction = {
             'buyerOid': req.session.user.id.toString(),
             'vendorOid': dbres1.res.vendorOid.toString(),
@@ -149,7 +151,9 @@ router.all("/checkout", async function (req, res) {
             'price': item.price,
             'total': item.quantity * item.price,
             'date': date,
-            'status': 'Processing'
+            'status': 'Processing',
+            'lat': config.coordinates[ind].lat,
+            'long': config.coordinates[ind].long
         }
         console.log(transaction)
         dbres = await dbTrans.addTransaction(transaction)
@@ -158,6 +162,7 @@ router.all("/checkout", async function (req, res) {
             return res.redirect('/products');
         }
     }
+    req.session.cart.items = []
     req.flash('notif', 'Successful checkout')
     return res.redirect('/dashboard');
 })
