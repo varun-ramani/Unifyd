@@ -155,6 +155,7 @@ router.all("/checkout", async function (req, res) {
             return res.redirect('/products');
         }
     }
+    req.session.cart.items = []
     req.flash('notif', 'Successful checkout')
     return res.redirect('/dashboard');
 })
