@@ -6,9 +6,9 @@ db = {}
 
 db.addTransaction = function (data) {
     transaction = {
-        'buyerOid': data.buyerOid,
-        'vendorOid': data.vendorOid,
-        'productOid': data.productOid,
+        'buyerOid': new mongodb.ObjectID(data.buyerOid),
+        'vendorOid': new mongodb.ObjectID(data.vendorOid),
+        'productOid': new mongodb.ObjectID(data.productOid),
         'quantity': data.quantity,
         'price': data.price,
         'total': data.total,
@@ -20,6 +20,7 @@ db.addTransaction = function (data) {
     return new Promise(function (resolve, reject) {
         mongo.getDb().collection('transactions').insertOne(transaction, function (err, res) {
             if (err) {
+                console.log(err)
                 resolve({ 'status': 'fail' })
             } else {
                 resolve({ 'status': 'success' })

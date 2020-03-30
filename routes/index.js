@@ -124,35 +124,34 @@ router.all("/checkout", async function (req, res) {
 
     for (var i = 0; i < req.session.cart.items.length; i++) {
         item = req.session.cart.items[i]
-        dbres1 = dbProducts.getProductById({ "id": item._id, })
+        dbres1 = await dbProducts.getProductById({ "id": item._id.toString(), })
         if (dbres1.status == "fail") {
-            req.flash('notif', 'Checkout failed! DB Error')
+            req.flash('notif', 'Partial-checkout failed! DB Error')
             return res.redirect('/products');
         }
-        if(!dbres1.res){
-            req.flash('notif', 'Checkout failed! No vendor!')
+        if (!dbres1.res) {
+            req.flash('notif', 'Partial-checkout failed! No vendor!')
             return res.redirect('/products');
         }
         date = new Date();
         transaction = {
-            'buyerOid': req.session.user.id,
-            'vendorOid': dbres1.res.vendorOid,
-            'productOid': item._id,
+            'buyerOid': req.session.user.id.toString(),
+            'vendorOid': dbres1.res.vendorOid.toString(),
+            'productOid': item._id.toString(),
             'quantity': item.quantity,
             'price': item.price,
             'total': item.quantity * item.price,
-            'date': date
+            'date': date,
+            'status': 'Processing'
         }
-        dbres = dbTrans.addTransaction()
-        if (dbres.status == "success") {
-            req.flash('notif', 'Successful checkout')
-            return res.redirect('/products');
-        }else{
-            req.flash('notif', 'Failed checkout')
+        console.log(transaction)
+        dbres = await dbTrans.addTransaction(transaction)
+        if (dbres.status == "fail") {
+            req.flash('notif', 'Partial-checkout fail')
             return res.redirect('/products');
         }
     }
-
+    req.flash('notif', 'Successful checkout')
     return res.redirect('/dashboard');
 })
 
