@@ -27,7 +27,7 @@
             <div id="" class="col col-md-3">
                 <div class="card productcard col p-0 mr-3 mb-3" style="border-width: 1.2px; width:100%">
                     <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
-                        data-target="#modalNum">
+                        data-target="#mapModal" data-lat='38.897957' data-lng='-77.036560'>
                         <div class="img-hover-zoom m-0">
                             <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
                         </div>
@@ -74,8 +74,8 @@
             </div>
             <div id="" class="col col-md-3">
                 <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                    <a class="card-block stretched-link text-decoration-none" data-toggle="modal"
-                        data-target="#modalNum">
+                    <a class="card-block stretched-link text-decoration-none" data-toggle="mapModal"
+                        data-target="#modalNum" data-lat='21.03' data-lng='105.85'>
                         <div class="img-hover-zoom m-0">
                             <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
                         </div>
@@ -338,3 +338,89 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="mapModal" style="background-color: rgb(53, 53, 78, 0.9);" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong><p class="heading lead">Product Drop
+                    </p></strong>
+                
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 modal_body_content">
+                            <p>{Producname is en route}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 modal_body_map">
+                            <div class="location-map" id="location-map">
+                                <div style="width: 600px; height: 400px;" id="map_canvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 modal_body_end">
+                            <button class="btn btn-primary btn-success">Delivered</button>
+                        </div>
+                        <div class="col-3 modal_body_end">
+                            <button class="btn btn-outline-primary ">En Route</button>
+                        </div>
+                        <div class="col-3 modal_body_end">
+                            <button class="btn btn-outline-warning ">Proccessing</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+<!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+
+<script>
+    $(document).ready(function () {
+        var map = null;
+        var myMarker;
+        var myLatlng;
+        function initializeGMap(lat, lng) {
+            myLatlng = new google.maps.LatLng(lat, lng);
+
+            var myOptions = {
+                zoom: 12,
+                zoomControl: true,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            myMarker = new google.maps.Marker({
+                position: myLatlng
+            });
+            myMarker.setMap(map);
+        }
+        $('#mapModal').on('show.bs.modal', function (event) {
+            console.log("show map")
+            var button = $(event.relatedTarget);
+            initializeGMap(button.data('lat'), button.data('lng'));
+            $("#location-map").css("width", "100%");
+            $("#map_canvas").css("width", "100%");
+        });
+
+        // Trigger map resize event after modal shown
+        $('#mapModal').on('shown.bs.modal', function () {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(myLatlng);
+        });
+    });
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUwLCoLvOFQhL8-QL6aAVEN0RlTirHeUQ">
+    </script>
