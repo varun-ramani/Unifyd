@@ -68,9 +68,9 @@ function addProduct() {
     product = JSON.stringify({
         "name": nameAdd.value,
         "description": descriptionAdd.value,
-        "priceStart": priceSAdd.value,
-        "priceEnd": priceEAdd.value,
-        "limit": limitAdd.value,
+        "priceStart": parseFloat(priceSAdd.value),
+        "priceEnd": parseFloat(priceEAdd.value),
+        "limit": parseInt(limitAdd.value),
         "images": imagesAdd.value.replace(/\s/g, ""),
         "categories": categoryAdd.value.replace(/\s/g, "")
     })
