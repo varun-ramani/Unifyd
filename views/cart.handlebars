@@ -7,51 +7,39 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-white">Your cart</span>
-                <span class="badge badge-secondary badge-pill">3</span>
+                <span class="badge badge-secondary badge-pill">{{cart.items.length}}</span>
             </h4>
             <ul class="list-group mb-3 sticky-top">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                {{#each cart.items}}
+                <li class="list-group-item d-flex justify-content-between lh-condensed" id="mini-card-{{this._id}}">
                     <div>
-                        <h6 class="my-0">Toilet Paper</h6>                    
+                        <h6 class="my-0">{{this.name}} ({{this.quantity}})</h6>                    
                     </div>
-                    <span class="text-muted">$12</span>
+                    <span class="text-muted">${{this.price}}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Hand Sanitizer</h6>
-                    </div>
-                    <span class="text-muted">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Water</h6>
-                    </div>
-                    <span class="text-muted">$5</span>
-                </li>
+                {{/each}}
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (USD)</span>
-                    <strong>$25</strong>
+                    <strong>${{cart.totalPrice}}</strong>
                 </li>
             </ul>
         </div>
         <div class="col-md-8 order-md-1">
             <div class="row" id="cart-items">
-                <div id="" class="col col-md-3">
+                {{#each cart.items}}
+                <div id="card-{{this._id}}" class="col col-md-3" onClick="removeItem('{{this._id}}')">
                     <div class="card productcard col p-0 mr-3 mb-3" style=" border-width: 1.2px; width:100%">
-                        <a class="card-block stretched-link text-decoration-none" data-toggle="modal" data-target="#modalNum">
-
-                            <div class="img-hover-zoom m-0">
-                                <img src="imgsrc" class="card-img-top m-0" alt="..." style="width: 100%">
-                            </div>
+                        <div class="card-block stretched-link text-decoration-none">
                             <div class="card-body">
-                                <h4 style="color: white" class="card-title">productName</h4>
-                                <h5 style="color: white" class="card-text">$priceStart-$priceEnd</h5>
+                                <h4 style="color: white" class="card-title mb-1">{{this.name}}</h4>
+                                <h5 style="color: white" class="card-text mt-1">${{this.price}}</h5>
                                 <p style="color: white; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;  display: -webkit-box; -webkit-box-orient: vertical;"
-                                    class="card-text"><i>description</i></p>
+                                    class="card-text"><i>{{this.description}}</i></p>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
+                {{/each}}
             </div>
         </div>
         <div id="products-template" style="display: none">

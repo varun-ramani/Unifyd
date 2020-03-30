@@ -12,3 +12,80 @@ body {
     animation: introduceHeader 0.5s;
 
 }
+
+.card {
+    border-radius: 5px;
+    font-family: Poppins;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.product-card {
+    /* background-color: var(--color-background-secondary-light); */
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    margin-right: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+/* .product-card:hover {
+    opacity: 1;
+} */
+
+.product-card h1 {
+    /* color: var(--color-content-primary-light); */
+    font-family: Poppins;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+.product-card p {
+    /* color: var(--color-content-primary-light); */
+    font-family: Poppins;
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: bold;
+}
+
+/* .productcard:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+} */
+
+.img-hover-zoom {
+    /* [1.1] Set it as per your need */
+    overflow: hidden;
+    /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+
+/* .productcard:hover img {
+    transform: scale(1.2);
+} */
+
+.productcard {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-item:hover img {
+    transform: scale(1.2);
+}
+
+.img-hover-zoom img  {
+    transition: transform .5s ease;
+}

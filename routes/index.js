@@ -25,9 +25,15 @@ router.use((req, res, next) => {
     }
 });
 
-router.use('/api/products', require('./products'))
+router.use('/api/products', require('./products'));
 
 router.all("/products", function (req, res) {
+    if (req.session.cart == null) {
+        req.session.cart = {
+            "items": [],
+            "totalPrice": 0
+        };
+    }
     var searchPlaceholder = "";
     data = {
         title: 'Products',
@@ -38,6 +44,26 @@ router.all("/products", function (req, res) {
         user: req.session.user
     }
     return res.render('products', data)
+});
+
+router.use('/api/cart', require('./cart'));
+router.all('/cart', function (req, res) {
+    if (req.session.cart == null) {
+        req.session.cart = {
+            "items": [],
+            "totalPrice": 0
+        };
+    }
+    data = {
+        title: 'Cart',
+        css: ['/static/css/cart.css'],
+        js: ['/static/js/cart.js'],
+        nav: req.nav,
+        user: req.session.user,
+        cart: req.session.cart
+    }
+
+    return res.render('cart', data);
 });
 
 router.all("/dashboard", function (req, res) {
@@ -70,7 +96,8 @@ router.all("/cart", function(req,res){
         js: ['static/js/handlebars.js','/static/js/cart.js'],
         nav: req.nav,
         messages: req.flash('notif'),
-        user: req.session.user
+        user: req.session.user,
+        cart: req.session.cart
     }
     return res.render('cart', data);
    

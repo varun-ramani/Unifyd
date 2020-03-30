@@ -24,12 +24,16 @@ app.engine('handlebars', hbs({
             } else {
                 return options.fn(this);
             }
+        },
+
+        toCurrency: function(value) {
+            return value.toFixed(2) + "";
         }
     }
 }));
 app.set('view engine', 'handlebars');
 app.use(helmet())
-app.use(bodyParser.json());
+app.use(bodyParser.json({extended: false}));
 app.use(cookieParser('betajithisisvarun'));
 app.use('/static', express.static('static'));
 

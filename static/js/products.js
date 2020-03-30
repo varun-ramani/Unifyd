@@ -48,6 +48,7 @@ function search() {
                         .replace(/limit/g, productList[index]['limit'])
                         .replace(/CarImg/g, carimg)
                         .replace(/style="display: none"/g, "")
+                        .replace(/itemOid/g, productList[index]["_id"].toString());
                 }
 
 
@@ -58,6 +59,24 @@ function search() {
     }
 }
 
+function addItem(modalNum, itemOid) {
+    var priceInput = document.getElementById(`modal-${modalNum}-price`);
+    var quantityInput = document.getElementById(`modal-${modalNum}-quantity`);
+    fetch("/api/cart/addItem", {
+        "method": "POST",
+        "body": JSON.stringify({
+            'price': priceInput.value,
+            'quantity': quantityInput.value,
+            'itemOid': itemOid
+        }),
+        "headers": {
+            "Content-type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(responseJson => console.log(responseJson));
+}
+
 fetch("/api/products/popular")
     .then(response => response.json())
     .then(responseJson => {
@@ -65,7 +84,6 @@ fetch("/api/products/popular")
         var newHTML = "";
 
         for (var index in productList) {
-            console.log(productList[index])
             var carimg = ""
             var categories = ""
             for (var i = 0; i < productList[index]['images'].length; i++) {
@@ -89,6 +107,7 @@ fetch("/api/products/popular")
                 .replace(/limit/g, productList[index]['limit'])
                 .replace(/CarImg/g, carimg)
                 .replace(/style="display: none"/g, "")
+                .replace(/itemOid/g, productList[index]["_id"].toString());
         }
 
         popularNow.innerHTML = newHTML;

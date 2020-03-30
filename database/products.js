@@ -92,6 +92,6 @@ db.searchProduct = function (data) {
         })
 
     })
-},
-    module.exports = db
+};
 
+module.exports = db;
