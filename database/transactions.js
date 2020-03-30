@@ -42,10 +42,36 @@ db.getTransactionsByVendor = function (data) {
     })
 }
 
+db.getRecentTransactionsByVendor= function (data) {
+    oid = new mongodb.ObjectID(data.id);
+    return new Promise(function (resolve, reject) {
+        mongo.getDb().collection('transactions').find({ 'vendorOid': oid }).sort({date: -1}).toArray(function (err, result) {
+            if (err) {
+                resolve({ 'status': 'fail' })
+            } else {
+                resolve({ 'status': 'success', res: result});
+            }
+        });
+    })
+}
+
 db.getTransactionsByBuyer = function (data) {
     oid = new mongodb.ObjectID(data.id);
     return new Promise(function (resolve, reject) {
         mongo.getDb().collection('transactions').find({ 'buyerOid': oid }).toArray(function (err, result) {
+            if (err) {
+                resolve({ 'status': 'fail' })
+            } else {
+                resolve({ 'status': 'success', res: result});
+            }
+        });
+    })
+}
+
+db.getRecentTransactionsByBuyer = function (data) {
+    oid = new mongodb.ObjectID(data.id);
+    return new Promise(function (resolve, reject) {
+        mongo.getDb().collection('transactions').find({ 'buyerOid': oid }).sort({date: -1}).toArray(function (err, result) {
             if (err) {
                 resolve({ 'status': 'fail' })
             } else {

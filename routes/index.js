@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../config')
-var dbTrans = require('../database/transactions')
-var dbProducts = require('../database/products')
+var config = require('../config');
+var dbTrans = require('../database/transactions');
+var dbProducts = require('../database/products');
+var dbUsers = require('../database/users');
 
 router.all('/', function (req, res) {
     data = {
@@ -87,13 +88,51 @@ router.all("/dashboard", async function (req, res) {
             js: ['/static/js/dashboard.js'],
             nav: req.nav,
             messages: req.flash('notif'),
-            transactions: [],
             user: req.session.user
         }
 
-        var transactions = await dbTrans.getTransactionsByBuyer({id: req.session.user.id});
+        var transactions = (await dbTrans.getTransactionsByBuyer({id: req.session.user.id})).res;
+        var recentTransactions = (await dbTrans.getRecentTransactionsByBuyer({id: req.session.user.id})).res;
 
-        console.log(transactions.res);
+        var resolvedTransactions = [];
+
+        for (var index in transactions) {
+            var transaction = transactions[index];
+            var product = (await dbProducts.getProductById({id: transaction.productOid})).res;
+            var vendor = (await dbUsers.getUserById({id: transaction.vendorOid})).res;
+
+            resolvedTransactions.push({
+                "vendor": vendor,
+                "product": product,
+                "lat": transaction.lat,
+                "long": transaction.long,
+                "price": transaction.price
+            });
+        }
+
+        var recentTransactions = (await dbTrans.getRecentTransactionsByBuyer({id: req.session.user.id})).res;
+
+        var resolvedRecentTransactions = [];
+
+        for (var index in recentTransactions) {
+            var transaction = recentTransactions[index];
+            var product = (await dbProducts.getProductById({id: transaction.productOid})).res;
+            var vendor = (await dbUsers.getUserById({id: transaction.vendorOid})).res;
+
+            resolvedRecentTransactions.push({
+                "vendor": vendor,
+                "product": product,
+                "lat": transaction.lat,
+                "long": transaction.long,
+                "price": transaction.price,
+                "status": transactions.status
+            });
+        }
+
+        data.transactions = resolvedTransactions;
+        data.recentTransactions = resolvedRecentTransactions.slice(0, 4);
+
+        console.log(data.transactions);
 
         return res.render('buyerdash', data);
     }

@@ -28,6 +28,10 @@ app.engine('handlebars', hbs({
 
         toCurrency: function(value) {
             return value.toFixed(2) + "";
+        },
+
+        addOne: function(value) {
+            return Number.parseInt(value) + 1;
         }
     }
 }));
