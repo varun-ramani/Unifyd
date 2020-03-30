@@ -1,6 +1,8 @@
 var cart = document.getElementById('cart-items');
 var productTemplate = document.getElementById('products-template').innerHTML;
 
+
+
 function removeItem(id) {
     var miniCard = document.getElementById('mini-card-' + id);
     var card = document.getElementById('card-' + id);
@@ -16,6 +18,8 @@ function removeItem(id) {
         "body": JSON.stringify({"id": id})
     })
     .then(response => console.log(response));
+
+    window.setTimeout(() => location.href = '/cart', 500);
 }
 
 // fetch("/api/products/popular") // get endpoitn
