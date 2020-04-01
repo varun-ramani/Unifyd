@@ -9,6 +9,9 @@ config.database = {
     uri: "mongodb+srv://unifyd:unifyd@yeee-knb70.mongodb.net/test",
     db: "unifyddb"
 }
+
+// and the application secret key rip
+// no hax plzplzplzplz
 config.session = {
     secret: "unifydisbae",
     cookie: {
