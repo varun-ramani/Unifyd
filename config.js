@@ -2,6 +2,9 @@
 config = {}
 
 config.port = 3000
+
+// ik we committed the database credentials to GitHub hehe 
+// plz don't hax
 config.database = {
     uri: "mongodb+srv://unifyd:unifyd@yeee-knb70.mongodb.net/test",
     db: "unifyddb"
